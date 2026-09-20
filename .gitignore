@@ -12,3 +12,7 @@ desktop.ini
 
 # Logs
 *.log
+
+# Fotos originales sin procesar (fuentes personales, no van al sitio)
+WhatsApp Image*.jpeg
+Fotos Clark Darwin/

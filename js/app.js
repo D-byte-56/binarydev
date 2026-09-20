@@ -61,6 +61,11 @@ const TRAD = {
     code_brand: 'Tu marca',
     code_sell: 'Vende más',
     code_cta: 'Cotizar',
+    team_role: 'Ingeniero en Sistemas',
+    team_badge_sites: '4+ sitios publicados',
+    team_badge_clients: 'Clientes en Nicaragua y EE. UU.',
+    team_darwin_alt: 'Darwin Montiel, Ingeniero en Sistemas y cofundador de {empresa}',
+    team_clark_alt: 'Clark Martínez, Ingeniero en Sistemas y cofundador de {empresa}',
 
     about_title: 'Somos {empresa}',
     about_1: 'Somos un estudio de desarrollo web con base en <strong>{ciudad}, {pais}</strong>. Ayudamos a negocios y empresas a tener una presencia digital clara, rápida y fácil de administrar.',
@@ -180,6 +185,11 @@ const TRAD = {
     code_brand: 'Your brand',
     code_sell: 'Sell more',
     code_cta: 'Get a quote',
+    team_role: 'Systems Engineer',
+    team_badge_sites: '4+ sites launched',
+    team_badge_clients: 'Clients in Nicaragua and the US',
+    team_darwin_alt: 'Darwin Montiel, Systems Engineer and co-founder of {empresa}',
+    team_clark_alt: 'Clark Martínez, Systems Engineer and co-founder of {empresa}',
 
     about_title: 'We are {empresa}',
     about_1: 'We are a web development studio based in <strong>{ciudad}, {pais}</strong>. We help businesses and companies build a clear, fast and easy-to-manage online presence.',
