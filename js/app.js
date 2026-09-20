@@ -14,14 +14,11 @@ const CONFIG = {
   pais: 'Nicaragua',
 
   /* WhatsApp: código de país + número, solo dígitos (ej. Nicaragua: 505XXXXXXXX) */
-  telefono: '50500000000',
-  correo: 'contacto@tudominio.com',
+  telefono: '50586836902',
+  correo: 'scriptdevsa@gmail.com',
 
   redes: {
-    facebook: 'https://facebook.com/tu-usuario',
-    github: 'https://github.com/tu-usuario',
-    linkedin: 'https://www.linkedin.com/in/tu-usuario',
-    twitter: 'https://x.com/tu-usuario'
+    facebook: 'https://www.facebook.com/profile.php?id=61593092835244'
   },
 
   /* true = los clics suenan hasta que el visitante los silencie */
