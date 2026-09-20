@@ -16,3 +16,6 @@ desktop.ini
 # Fotos originales sin procesar (fuentes personales, no van al sitio)
 WhatsApp Image*.jpeg
 Fotos Clark Darwin/
+
+# Notas internas de trabajo (no se publican)
+ESTADO-MEJORAS.md
