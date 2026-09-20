@@ -121,6 +121,9 @@ const TRAD = {
     p4_sector: 'Paisajismo',
     p4_title: "Romero's Lawn Service",
     p4_desc: 'Sitio bilingüe para una empresa de jardinería en Banning, California, con servicios, galería y cotizaciones gratis.',
+    p5_sector: 'Paisajismo',
+    p5_title: 'EV Lawncare',
+    p5_desc: 'Servicios de árboles, hardscapes, riego y cercas en Cumming, Georgia, con estimados gratis y contacto por mensaje.',
     github_btn: 'Ver más en GitHub',
 
     contact_title: 'Cuéntanos sobre tu proyecto',
@@ -245,6 +248,9 @@ const TRAD = {
     p4_sector: 'Landscaping',
     p4_title: "Romero's Lawn Service",
     p4_desc: 'Bilingual site for a landscaping company in Banning, California, with services, a gallery and free quotes.',
+    p5_sector: 'Landscaping',
+    p5_title: 'EV Lawncare',
+    p5_desc: 'Tree service, hardscapes, irrigation and fencing in Cumming, Georgia, with free estimates and quotes by text.',
     github_btn: 'See more on GitHub',
 
     contact_title: 'Tell us about your project',
