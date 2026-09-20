@@ -1122,6 +1122,12 @@ html[data-theme='dark'] .equipo__fondo {
   gap: 32px;
 }
 
+/* Mockup animado debajo de los pasos: centrado y con ancho acotado */
+.proceso__demo {
+  max-width: 660px;
+  margin: clamp(40px, 6vw, 64px) auto 0;
+}
+
 .paso {
   position: relative;
   padding-top: 36px;

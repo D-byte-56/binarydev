@@ -613,7 +613,7 @@ const TRAD = {
      Se pausa con la pestaña oculta o el hero fuera de pantalla, y respeta
      "reducir movimiento" (queda estático en su estado final). */
   (() => {
-    const ventana = document.querySelector('.portada .ventana');
+    const ventana = document.querySelector('.ventana');
     if (!ventana) return;
 
     /* Tiempos ajustables (ms). El de "build" NO se fija a mano: se mide del CSS. */
