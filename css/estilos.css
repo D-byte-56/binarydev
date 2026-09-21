@@ -1526,6 +1526,11 @@ html[data-theme='dark'] .proyecto:focus-within {
   font-size: 0.9rem;
 }
 
+/* Botonera de redes: cada botón toma el color de su plataforma al pasar el mouse */
+.btn--red-whatsapp:hover { border-color: #25d366; color: #1fa855; }
+.btn--red-facebook:hover { border-color: #1877f2; color: #1877f2; }
+.btn--red-gmail:hover { border-color: #ea4335; color: #ea4335; }
+
 .formulario {
   display: grid;
   gap: 16px;
