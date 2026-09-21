@@ -626,171 +626,21 @@ html:not([data-theme='dark']) .icono-sol {
   stroke-width: 2.4;
 }
 
-/* ===== Portada: columna del equipo (dos socios) ===== */
-.portada__equipo {
+/* ===== Portada: columna del mockup de código ===== */
+.portada__demo {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: clamp(360px, 42vw, 520px);
-}
-
-/* Forma suave con el gradiente de la marca, detrás de las fotos */
-.equipo__fondo {
-  position: absolute;
-  z-index: 0;
-  width: min(84%, 440px);
-  aspect-ratio: 1;
-  border-radius: 46% 54% 57% 43% / 52% 44% 56% 48%;
-  background: radial-gradient(circle at 38% 32%, var(--brand-2), var(--brand) 56%, transparent 74%);
-  opacity: 0.72;
-  filter: blur(12px);
-  transform: translateY(-4%);
-}
-
-html[data-theme='dark'] .equipo__fondo {
-  opacity: 0.55;
-}
-
-.equipo__fotos {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-.socio {
-  position: relative;
-  width: clamp(150px, 19vw, 216px);
-}
-
-.socio__foto {
-  display: block;
   width: 100%;
-  height: auto;
-  filter: drop-shadow(0 20px 30px rgba(5, 12, 40, 0.3));
 }
 
-/* Foto de adelante (Darwin): más abajo y al frente */
-.socio--frente {
-  z-index: 2;
-}
-
-/* Foto de atrás (Clark): un poco más pequeña, elevada y superpuesta */
-.socio--fondo {
-  z-index: 1;
-  margin-left: -22px;
-  transform: translateY(-34px) scale(0.9);
-  transform-origin: bottom center;
-}
-
-/* Placa con el nombre: tarjeta bajo la foto, superpuesta a su base */
-.socio__placa {
-  position: relative;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  width: max-content;
-  max-width: 128%;
-  margin: -24px auto 0;
-  padding: 8px 14px;
-  text-align: center;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  box-shadow: var(--sombra);
-}
-
-.socio__nombre {
-  font-family: var(--f-titulo);
-  font-weight: 600;
-  font-size: 0.92rem;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-  white-space: nowrap;
-}
-
-.socio__rol {
-  font-size: 0.74rem;
-  color: var(--muted);
-  white-space: nowrap;
-}
-
-/* Tarjetas flotantes tipo badge */
-.equipo__badge {
-  position: absolute;
-  z-index: 4;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 8px 13px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  box-shadow: var(--sombra);
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--ink);
-  max-width: 46%;
-}
-
-.equipo__badge .i {
-  color: var(--brand);
-  stroke-width: 2.6;
-  flex: none;
-}
-
-.equipo__badge--1 {
-  top: 4%;
-  left: 0;
-}
-
-.equipo__badge--2 {
-  bottom: 6%;
-  right: 0;
-}
-
-/* Entrada suave (fade + subir), respetando reduce-motion */
 @media (prefers-reduced-motion: no-preference) {
-  .portada__equipo .equipo__fotos,
-  .portada__equipo .equipo__badge {
-    animation: equipo-entra 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  .portada__demo {
+    animation: demo-entra 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.15s;
   }
-  .portada__equipo .equipo__badge--1 { animation-delay: 0.25s; }
-  .portada__equipo .equipo__badge--2 { animation-delay: 0.4s; }
 
-  @keyframes equipo-entra {
+  @keyframes demo-entra {
     from { opacity: 0; transform: translateY(16px); }
     to { opacity: 1; }
-  }
-}
-
-/* Pantallas angostas: separar las fotos para que las placas no se enciman */
-@media (max-width: 480px) {
-  .socio {
-    width: clamp(130px, 39vw, 158px);
-  }
-  .socio--fondo {
-    margin-left: 10px;
-    transform: translateY(-18px) scale(0.94);
-  }
-  .socio__placa {
-    max-width: 118%;
-    padding: 6px 10px;
-  }
-  .socio__nombre {
-    font-size: 0.82rem;
-  }
-  .socio__rol {
-    font-size: 0.68rem;
-  }
-  .equipo__badge {
-    font-size: 0.72rem;
-    padding: 6px 10px;
   }
 }
 
@@ -1120,12 +970,6 @@ html[data-theme='dark'] .equipo__fondo {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 32px;
-}
-
-/* Mockup animado debajo de los pasos: centrado y con ancho acotado */
-.proceso__demo {
-  max-width: 660px;
-  margin: clamp(40px, 6vw, 64px) auto 0;
 }
 
 .paso {
