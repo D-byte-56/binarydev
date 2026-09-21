@@ -91,6 +91,7 @@
       <nav class="menu" id="menu" aria-label="Navegación principal" data-i18n-attr="aria-label:nav_label">
         <a href="#nosotros" data-seccion="nosotros" data-i18n="nav_about">Nosotros</a>
         <a href="#servicios" data-seccion="servicios" data-i18n="nav_services">Servicios</a>
+        <a href="#paquetes" data-seccion="paquetes" data-i18n="nav_packages">Paquetes</a>
         <a href="#proceso" data-seccion="proceso" data-i18n="nav_process">Proceso</a>
         <a href="#proyectos" data-seccion="proyectos" data-i18n="nav_projects">Proyectos</a>
         <a href="#contacto" data-seccion="contacto" data-i18n="nav_contact">Contacto</a>
@@ -126,7 +127,7 @@
       <div class="contenedor portada__grid">
         <div class="portada__texto">
           <h1 data-i18n="hero_title">Sitios web que hacen crecer tu empresa</h1>
-          <p class="portada__lema" data-i18n="hero_text">En Binarydev diseñamos y desarrollamos sitios web, tiendas en línea y sistemas a medida para empresas que quieren vender más y verse profesionales.</p>
+          <p class="portada__lema" data-i18n="hero_text">En Binarydev diseñamos y desarrollamos sitios web, tiendas en línea y soluciones a la medida para empresas que quieren vender más y verse profesionales.</p>
           <div class="botones">
             <a href="#contacto" class="btn btn--primario" data-i18n="btn_web">Quiero un sitio web</a>
             <a href="#proyectos" class="btn btn--secundario" data-i18n="btn_projects">Ver proyectos</a>
@@ -251,8 +252,78 @@
       </div>
     </section>
 
+    <!-- ===== Paquetes ===== -->
+    <section class="seccion seccion--alt" id="paquetes" data-seccion-obs="paquetes" aria-labelledby="t-paquetes">
+      <div class="contenedor">
+        <div class="encabezado">
+          <h2 class="titulo" id="t-paquetes" data-i18n="packages_title">Paquetes</h2>
+          <p class="encabezado__texto" data-i18n="packages_sub">Opciones claras para empezar. Cada proyecto se cotiza según lo que necesitas.</p>
+        </div>
+
+        <div class="paquetes">
+          <!-- Paquete 1: Página de aterrizaje -->
+          <article class="paquete corte">
+            <h3 class="paquete__nombre" data-i18n="pack1_name">Página de aterrizaje</h3>
+            <p class="paquete__desc" data-i18n="pack1_desc">Una sola página, enfocada en que te contacten. Ideal para presentar tu negocio o una campaña.</p>
+            <p class="paquete__precio" data-i18n="pack_price_note">Cotización a tu medida</p>
+            <ul class="lista-check">
+              <li><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pack1_a">Diseño de una página a tu medida</span></li>
+              <li><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pack1_b">Formulario de contacto y botón de WhatsApp</span></li>
+              <li><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pack1_c">Optimización básica para Google</span></li>
+              <li><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pack1_d">Se ve bien en celular, tableta y computadora</span></li>
+              <li><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pack1_e">Publicación y conexión de tu dominio</span></li>
+            </ul>
+            <a class="btn btn--secundario btn--bloque" data-paquete="landing" target="_blank" rel="noopener" href="https://wa.me/50586836902">
+              <svg class="i i--relleno" width="18" height="18" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+              <span data-i18n="pack_cta">Cotizar este paquete</span>
+            </a>
+          </article>
+
+          <!-- Paquete 2: Sitio corporativo (destacado) -->
+          <article class="paquete paquete--destacado corte">
+            <span class="paquete__popular" data-i18n="pack_popular">Más elegido</span>
+            <h3 class="paquete__nombre" data-i18n="pack2_name">Sitio corporativo</h3>
+            <p class="paquete__desc" data-i18n="pack2_desc">Varias secciones para presentar tu empresa completa y generar confianza.</p>
+            <p class="paquete__precio" data-i18n="pack_price_note">Cotización a tu medida</p>
+            <ul class="lista-check">
+              <li><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pack2_a">Varias secciones (inicio, servicios, nosotros, contacto)</span></li>
+              <li><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pack2_b">Diseño exclusivo con tu marca</span></li>
+              <li><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pack2_c">Formulario, WhatsApp y mapa de ubicación</span></li>
+              <li><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pack2_d">SEO básico y velocidad optimizada</span></li>
+              <li><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pack2_e">Te enseñamos a editar tus contenidos</span></li>
+              <li><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pack2_f">Soporte después del lanzamiento</span></li>
+            </ul>
+            <a class="btn btn--primario btn--bloque" data-paquete="corporativo" target="_blank" rel="noopener" href="https://wa.me/50586836902">
+              <svg class="i i--relleno" width="18" height="18" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+              <span data-i18n="pack_cta">Cotizar este paquete</span>
+            </a>
+          </article>
+
+          <!-- Paquete 3: Tienda en línea -->
+          <article class="paquete corte">
+            <h3 class="paquete__nombre" data-i18n="pack3_name">Tienda en línea</h3>
+            <p class="paquete__desc" data-i18n="pack3_desc">Vende tus productos las 24 horas, con un panel fácil de administrar.</p>
+            <p class="paquete__precio" data-i18n="pack_price_note">Cotización a tu medida</p>
+            <ul class="lista-check">
+              <li><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pack3_a">Catálogo de productos con carrito</span></li>
+              <li><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pack3_b">Pagos en línea y opciones de envío</span></li>
+              <li><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pack3_c">Panel para administrar productos y pedidos</span></li>
+              <li><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pack3_d">Diseño con tu marca, listo para celular</span></li>
+              <li><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="pack3_e">Capacitación y soporte inicial</span></li>
+            </ul>
+            <a class="btn btn--secundario btn--bloque" data-paquete="tienda" target="_blank" rel="noopener" href="https://wa.me/50586836902">
+              <svg class="i i--relleno" width="18" height="18" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+              <span data-i18n="pack_cta">Cotizar este paquete</span>
+            </a>
+          </article>
+        </div>
+
+        <p class="paquetes__nota" data-i18n="packages_note">¿No estás seguro de cuál necesitas? Escríbenos y te recomendamos la mejor opción sin compromiso.</p>
+      </div>
+    </section>
+
     <!-- ===== Proceso ===== -->
-    <section class="seccion seccion--alt" id="proceso" data-seccion-obs="proceso" aria-labelledby="t-proceso">
+    <section class="seccion" id="proceso" data-seccion-obs="proceso" aria-labelledby="t-proceso">
       <div class="contenedor">
         <div class="encabezado">
           <h2 class="titulo" id="t-proceso" data-i18n="process_title">Cómo trabajamos</h2>
@@ -286,7 +357,7 @@
 
     <!-- ===== Proyectos =====
          Cada tarjeta enlaza a un sitio real y muestra una captura en vivo (ver DOCUMENTACION.md, sección "Proyectos"). -->
-    <section class="seccion" id="proyectos" data-seccion-obs="proyectos" aria-labelledby="t-proyectos">
+    <section class="seccion seccion--alt" id="proyectos" data-seccion-obs="proyectos" aria-labelledby="t-proyectos">
       <div class="contenedor">
         <div class="encabezado">
           <h2 class="titulo" id="t-proyectos" data-i18n="projects_title">Proyectos</h2>
@@ -422,6 +493,90 @@
               </div>
             </a>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Preguntas frecuentes ===== -->
+    <section class="seccion" id="faq" data-seccion-obs="faq" aria-labelledby="t-faq">
+      <div class="contenedor contenedor--angosto">
+        <div class="encabezado">
+          <h2 class="titulo" id="t-faq" data-i18n="faq_title">Preguntas frecuentes</h2>
+          <p class="encabezado__texto" data-i18n="faq_sub">Lo que más nos preguntan antes de empezar un proyecto.</p>
+        </div>
+
+        <div class="faq">
+          <div class="faq__item corte">
+            <h3 class="faq__cabeza">
+              <button type="button" class="faq__boton" aria-expanded="false" aria-controls="faq-p1">
+                <span data-i18n="faq_q1">¿Cuánto tarda en estar listo mi sitio?</span>
+                <span class="faq__chevron" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq-p1" hidden>
+              <p data-i18n="faq_a1">Una página de aterrizaje suele tomar 1–2 semanas; un sitio corporativo 3–5 semanas; una tienda depende del catálogo. Te damos una fecha estimada al cotizar.</p>
+            </div>
+          </div>
+
+          <div class="faq__item corte">
+            <h3 class="faq__cabeza">
+              <button type="button" class="faq__boton" aria-expanded="false" aria-controls="faq-p2">
+                <span data-i18n="faq_q2">¿Qué necesitan de mí para arrancar?</span>
+                <span class="faq__chevron" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq-p2" hidden>
+              <p data-i18n="faq_a2">Tu logo (si lo tienes), los textos e imágenes de tu negocio y ejemplos de sitios que te gusten. Si te falta algo, te ayudamos a resolverlo.</p>
+            </div>
+          </div>
+
+          <div class="faq__item corte">
+            <h3 class="faq__cabeza">
+              <button type="button" class="faq__boton" aria-expanded="false" aria-controls="faq-p3">
+                <span data-i18n="faq_q3">¿El dominio y el hosting están incluidos?</span>
+                <span class="faq__chevron" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq-p3" hidden>
+              <p data-i18n="faq_a3">Te asesoramos y lo dejamos configurado y funcionando. El costo anual del dominio y el hosting corre por tu cuenta, y quedan a tu nombre.</p>
+            </div>
+          </div>
+
+          <div class="faq__item corte">
+            <h3 class="faq__cabeza">
+              <button type="button" class="faq__boton" aria-expanded="false" aria-controls="faq-p4">
+                <span data-i18n="faq_q4">¿Puedo editar el contenido yo mismo?</span>
+                <span class="faq__chevron" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq-p4" hidden>
+              <p data-i18n="faq_a4">Sí. Según el paquete, te entregamos un panel para cambiar textos e imágenes y te capacitamos para que lo manejes sin depender de nosotros.</p>
+            </div>
+          </div>
+
+          <div class="faq__item corte">
+            <h3 class="faq__cabeza">
+              <button type="button" class="faq__boton" aria-expanded="false" aria-controls="faq-p5">
+                <span data-i18n="faq_q5">¿Trabajan con clientes fuera de Nicaragua?</span>
+                <span class="faq__chevron" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq-p5" hidden>
+              <p data-i18n="faq_a5">Sí, trabajamos de forma remota con empresas de cualquier país. Varios de nuestros proyectos son para clientes en Estados Unidos.</p>
+            </div>
+          </div>
+
+          <div class="faq__item corte">
+            <h3 class="faq__cabeza">
+              <button type="button" class="faq__boton" aria-expanded="false" aria-controls="faq-p6">
+                <span data-i18n="faq_q6">¿Cómo son las formas de pago?</span>
+                <span class="faq__chevron" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq__panel" id="faq-p6" hidden>
+              <p data-i18n="faq_a6">Normalmente el 50% para iniciar y el 50% restante a la entrega. Coordinamos el método contigo al momento de cotizar.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

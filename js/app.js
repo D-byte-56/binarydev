@@ -36,6 +36,7 @@ const TRAD = {
     nav_label: 'Navegación principal',
     nav_about: 'Nosotros',
     nav_services: 'Servicios',
+    nav_packages: 'Paquetes',
     nav_process: 'Proceso',
     nav_projects: 'Proyectos',
     nav_contact: 'Contacto',
@@ -52,7 +53,7 @@ const TRAD = {
     wa_msg: 'Hola, me gustaría hablar sobre un sitio web para mi negocio.',
 
     hero_title: 'Sitios web que hacen crecer tu empresa',
-    hero_text: 'En {empresa} diseñamos y desarrollamos sitios web, tiendas en línea y sistemas a medida para empresas que quieren vender más y verse profesionales.',
+    hero_text: 'En {empresa} diseñamos y desarrollamos sitios web, tiendas en línea y soluciones a la medida para empresas que quieren vender más y verse profesionales.',
     btn_web: 'Quiero un sitio web',
     btn_projects: 'Ver proyectos',
     perk_1: 'Se ve bien en celular, tableta y computadora',
@@ -88,6 +89,53 @@ const TRAD = {
     s4_text: 'Renovamos sitios antiguos y mejoramos su rapidez, seguridad y posicionamiento en buscadores.',
     s5_title: 'Mantenimiento y soporte',
     s5_text: 'Hosting, dominio, copias de seguridad, actualizaciones y cambios de contenido cuando los necesites.',
+
+    packages_title: 'Paquetes',
+    packages_sub: 'Opciones claras para empezar. Cada proyecto se cotiza según lo que necesitas.',
+    pack_price_note: 'Cotización a tu medida',
+    pack_popular: 'Más elegido',
+    pack_cta: 'Cotizar este paquete',
+    packages_note: '¿No estás seguro de cuál necesitas? Escríbenos y te recomendamos la mejor opción sin compromiso.',
+    pack1_name: 'Página de aterrizaje',
+    pack1_desc: 'Una sola página, enfocada en que te contacten. Ideal para presentar tu negocio o una campaña.',
+    pack1_a: 'Diseño de una página a tu medida',
+    pack1_b: 'Formulario de contacto y botón de WhatsApp',
+    pack1_c: 'Optimización básica para Google',
+    pack1_d: 'Se ve bien en celular, tableta y computadora',
+    pack1_e: 'Publicación y conexión de tu dominio',
+    pack2_name: 'Sitio corporativo',
+    pack2_desc: 'Varias secciones para presentar tu empresa completa y generar confianza.',
+    pack2_a: 'Varias secciones (inicio, servicios, nosotros, contacto)',
+    pack2_b: 'Diseño exclusivo con tu marca',
+    pack2_c: 'Formulario, WhatsApp y mapa de ubicación',
+    pack2_d: 'SEO básico y velocidad optimizada',
+    pack2_e: 'Te enseñamos a editar tus contenidos',
+    pack2_f: 'Soporte después del lanzamiento',
+    pack3_name: 'Tienda en línea',
+    pack3_desc: 'Vende tus productos las 24 horas, con un panel fácil de administrar.',
+    pack3_a: 'Catálogo de productos con carrito',
+    pack3_b: 'Pagos en línea y opciones de envío',
+    pack3_c: 'Panel para administrar productos y pedidos',
+    pack3_d: 'Diseño con tu marca, listo para celular',
+    pack3_e: 'Capacitación y soporte inicial',
+    wa_pack_landing: 'Hola {empresa}, me interesa el paquete «Página de aterrizaje». ¿Me pueden dar una cotización?',
+    wa_pack_corporativo: 'Hola {empresa}, me interesa el paquete «Sitio corporativo». ¿Me pueden dar una cotización?',
+    wa_pack_tienda: 'Hola {empresa}, me interesa el paquete «Tienda en línea». ¿Me pueden dar una cotización?',
+
+    faq_title: 'Preguntas frecuentes',
+    faq_sub: 'Lo que más nos preguntan antes de empezar un proyecto.',
+    faq_q1: '¿Cuánto tarda en estar listo mi sitio?',
+    faq_a1: 'Una página de aterrizaje suele tomar 1–2 semanas; un sitio corporativo 3–5 semanas; una tienda depende del catálogo. Te damos una fecha estimada al cotizar.',
+    faq_q2: '¿Qué necesitan de mí para arrancar?',
+    faq_a2: 'Tu logo (si lo tienes), los textos e imágenes de tu negocio y ejemplos de sitios que te gusten. Si te falta algo, te ayudamos a resolverlo.',
+    faq_q3: '¿El dominio y el hosting están incluidos?',
+    faq_a3: 'Te asesoramos y lo dejamos configurado y funcionando. El costo anual del dominio y el hosting corre por tu cuenta, y quedan a tu nombre.',
+    faq_q4: '¿Puedo editar el contenido yo mismo?',
+    faq_a4: 'Sí. Según el paquete, te entregamos un panel para cambiar textos e imágenes y te capacitamos para que lo manejes sin depender de nosotros.',
+    faq_q5: '¿Trabajan con clientes fuera de Nicaragua?',
+    faq_a5: 'Sí, trabajamos de forma remota con empresas de cualquier país. Varios de nuestros proyectos son para clientes en Estados Unidos.',
+    faq_q6: '¿Cómo son las formas de pago?',
+    faq_a6: 'Normalmente el 50% para iniciar y el 50% restante a la entrega. Coordinamos el método contigo al momento de cotizar.',
 
     process_title: 'Cómo trabajamos',
     process_sub: 'Un proceso simple, en cuatro etapas, para que sepas siempre en qué punto está tu proyecto.',
@@ -159,6 +207,7 @@ const TRAD = {
     nav_label: 'Main navigation',
     nav_about: 'About',
     nav_services: 'Services',
+    nav_packages: 'Packages',
     nav_process: 'Process',
     nav_projects: 'Projects',
     nav_contact: 'Contact',
@@ -175,7 +224,7 @@ const TRAD = {
     wa_msg: 'Hello, I would like to talk about a website for my business.',
 
     hero_title: 'Websites that help your business grow',
-    hero_text: 'At {empresa} we design and build websites, online stores and custom systems for companies that want to sell more and look professional.',
+    hero_text: 'At {empresa} we design and build websites, online stores and tailored solutions for companies that want to sell more and look professional.',
     btn_web: 'I want a website',
     btn_projects: 'View projects',
     perk_1: 'Looks great on phones, tablets and computers',
@@ -211,6 +260,53 @@ const TRAD = {
     s4_text: 'We renew outdated sites and improve their speed, security and search ranking.',
     s5_title: 'Maintenance and support',
     s5_text: 'Hosting, domain, backups, updates and content changes whenever you need them.',
+
+    packages_title: 'Packages',
+    packages_sub: 'Clear options to get started. Every project is quoted based on what you need.',
+    pack_price_note: 'Custom quote',
+    pack_popular: 'Most chosen',
+    pack_cta: 'Get a quote for this package',
+    packages_note: 'Not sure which one you need? Message us and we\'ll recommend the best option, no strings attached.',
+    pack1_name: 'Landing page',
+    pack1_desc: 'A single page focused on getting you contacted. Ideal to introduce your business or a campaign.',
+    pack1_a: 'Custom single-page design',
+    pack1_b: 'Contact form and WhatsApp button',
+    pack1_c: 'Basic Google optimization',
+    pack1_d: 'Looks great on phone, tablet and desktop',
+    pack1_e: 'Publishing and domain connection',
+    pack2_name: 'Corporate website',
+    pack2_desc: 'Several sections to present your whole company and build trust.',
+    pack2_a: 'Several sections (home, services, about, contact)',
+    pack2_b: 'Exclusive design with your brand',
+    pack2_c: 'Form, WhatsApp and location map',
+    pack2_d: 'Basic SEO and optimized speed',
+    pack2_e: 'We teach you to edit your content',
+    pack2_f: 'Post-launch support',
+    pack3_name: 'Online store',
+    pack3_desc: 'Sell your products 24/7, with an easy-to-manage dashboard.',
+    pack3_a: 'Product catalog with cart',
+    pack3_b: 'Online payments and shipping options',
+    pack3_c: 'Dashboard to manage products and orders',
+    pack3_d: 'Branded design, ready for mobile',
+    pack3_e: 'Training and initial support',
+    wa_pack_landing: 'Hi {empresa}, I\'m interested in the "Landing page" package. Could you give me a quote?',
+    wa_pack_corporativo: 'Hi {empresa}, I\'m interested in the "Corporate website" package. Could you give me a quote?',
+    wa_pack_tienda: 'Hi {empresa}, I\'m interested in the "Online store" package. Could you give me a quote?',
+
+    faq_title: 'Frequently asked questions',
+    faq_sub: 'The things people ask us most before starting a project.',
+    faq_q1: 'How long until my site is ready?',
+    faq_a1: 'A landing page usually takes 1–2 weeks; a corporate site 3–5 weeks; a store depends on the catalog. We give you an estimated date when we quote.',
+    faq_q2: 'What do you need from me to start?',
+    faq_a2: 'Your logo (if you have one), your business text and images, and examples of sites you like. If something is missing, we help you sort it out.',
+    faq_q3: 'Are the domain and hosting included?',
+    faq_a3: 'We advise you and leave everything set up and running. The yearly cost of the domain and hosting is on you, and they stay in your name.',
+    faq_q4: 'Can I edit the content myself?',
+    faq_a4: 'Yes. Depending on the package, we hand you a dashboard to change text and images and train you to manage it without depending on us.',
+    faq_q5: 'Do you work with clients outside Nicaragua?',
+    faq_a5: 'Yes, we work remotely with companies from any country. Several of our projects are for clients in the United States.',
+    faq_q6: 'How do payments work?',
+    faq_a6: 'Usually 50% to start and the remaining 50% on delivery. We coordinate the method with you when we quote.',
 
     process_title: 'How we work',
     process_sub: 'A simple four-step process so you always know where your project stands.',
@@ -316,6 +412,11 @@ const TRAD = {
       } else if (CONFIG.redes[tipo]) {
         a.href = CONFIG.redes[tipo];
       }
+    });
+
+    /* Botones "Cotizar este paquete": abren WhatsApp con el paquete ya escrito */
+    $$('[data-paquete]').forEach((a) => {
+      a.href = 'https://wa.me/' + CONFIG.telefono + '?text=' + encodeURIComponent(t('wa_pack_' + a.dataset.paquete));
     });
   };
 
@@ -533,6 +634,18 @@ const TRAD = {
   };
   window.addEventListener('scroll', alScroll, { passive: true });
   window.addEventListener('resize', alScroll);
+
+  /* ---------- FAQ: acordeón ---------- */
+  $$('.faq__boton').forEach((boton) => {
+    const panel = document.getElementById(boton.getAttribute('aria-controls'));
+    if (!panel) return;
+    boton.addEventListener('click', () => {
+      const abierto = boton.getAttribute('aria-expanded') === 'true';
+      boton.setAttribute('aria-expanded', String(!abierto));
+      panel.hidden = abierto;
+      reproducirClick();
+    });
+  });
 
   /* ---------- Formulario → WhatsApp ---------- */
   const form = document.getElementById('formulario');

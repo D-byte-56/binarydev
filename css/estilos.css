@@ -180,6 +180,11 @@ html.cambiando-tema *::after {
   padding-inline: var(--gutter);
 }
 
+/* Variante más angosta para bloques de lectura (FAQ) */
+.contenedor--angosto {
+  max-width: calc(760px + var(--gutter) * 2);
+}
+
 .salto {
   position: fixed;
   top: 8px;
@@ -963,6 +968,88 @@ html:not([data-theme='dark']) .icono-sol {
 .lista-check .i {
   color: var(--brand);
   stroke-width: 2.4;
+  flex: none;
+}
+
+/* ===== 8b. Paquetes ===== */
+.paquetes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+.paquete {
+  --c: 22px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 32px 28px;
+  background: var(--surface);
+}
+
+/* La tarjeta del medio se resalta con el color de marca */
+.paquete--destacado {
+  --corte-linea: var(--brand);
+  border-color: var(--brand);
+  box-shadow: var(--sombra);
+}
+
+.paquete__popular {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  z-index: 4;
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: var(--brand);
+  color: var(--on-brand);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.paquete__nombre {
+  font-family: var(--f-titulo);
+  font-weight: 500;
+  font-size: 1.18rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.paquete__desc {
+  color: var(--muted);
+  font-size: 0.95rem;
+  text-wrap: pretty;
+}
+
+.paquete__precio {
+  margin-top: 16px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-family: var(--f-titulo);
+  font-weight: 500;
+  font-size: 1.02rem;
+}
+
+.paquete .lista-check {
+  margin-top: 18px;
+  margin-bottom: 26px;
+}
+
+.paquete .btn {
+  margin-top: auto;
+}
+
+.paquetes__nota {
+  max-width: 44rem;
+  margin: 28px auto 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  text-align: center;
+  text-wrap: pretty;
 }
 
 /* ===== 9. Proceso ===== */
@@ -1331,6 +1418,81 @@ html[data-theme='dark'] .proyecto:focus-within {
   font-weight: 500;
 }
 
+/* ===== 10b. Preguntas frecuentes ===== */
+.faq {
+  display: grid;
+  gap: 14px;
+}
+
+.faq__item {
+  --c: 18px;
+  background: var(--surface);
+}
+
+.faq__cabeza {
+  margin: 0;
+  font: inherit;
+}
+
+.faq__boton {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 20px 24px;
+  background: none;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--f-titulo);
+  font-weight: 500;
+  font-size: 1.02rem;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.faq__boton > span:first-child {
+  flex: 1;
+}
+
+.faq__boton:hover {
+  color: var(--brand);
+}
+
+.faq__boton:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: -3px;
+}
+
+/* Chevron dibujado con CSS: gira al abrir */
+.faq__chevron {
+  flex: none;
+  width: 11px;
+  height: 11px;
+  margin-right: 4px;
+  border-right: 2px solid var(--brand);
+  border-bottom: 2px solid var(--brand);
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+}
+
+.faq__boton[aria-expanded='true'] .faq__chevron {
+  transform: rotate(-135deg);
+}
+
+.faq__panel {
+  padding: 0 24px 22px;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.faq__panel p {
+  margin: 0;
+  max-width: 62ch;
+  text-wrap: pretty;
+}
+
 /* ===== 11. Contacto ===== */
 .contacto {
   --c: 30px;
@@ -1592,6 +1754,13 @@ html[data-theme='dark'] .proyecto:focus-within {
   .nosotros,
   .contacto {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* 3 tarjetas de precio: pasan directo a 1 columna (2 dejaría una huérfana) */
+  .paquetes {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 30rem;
+    margin-inline: auto;
   }
 
   .encabezado {
