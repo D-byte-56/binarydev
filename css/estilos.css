@@ -1016,6 +1016,16 @@ html:not([data-theme='dark']) .icono-sol {
   gap: 28px;
 }
 
+/* Si el número de proyectos es impar, la última queda sola: la centramos
+   con el mismo ancho que las demás (solo con la grilla de 2 columnas) */
+@media (min-width: 721px) {
+  .proyecto:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: calc(50% - 14px);
+    margin-inline: auto;
+  }
+}
+
 /* La tarjeta externa da la perspectiva y la sombra (drop-shadow no se recorta con clip-path) */
 .proyecto {
   --i: 0;
@@ -1256,11 +1266,37 @@ html[data-theme='dark'] .proyecto:focus-within {
   padding: 24px 26px 28px;
 }
 
+.proyecto__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  margin-bottom: 6px;
+}
+
+.proyecto__meta .proyecto__sector {
+  margin-bottom: 0;
+}
+
 .proyecto__sector {
   margin-bottom: 6px;
   color: var(--brand);
   font-size: 0.86rem;
   font-weight: 600;
+}
+
+/* Distintivo para proyectos hechos por iniciativa propia del estudio */
+.proyecto__propio {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--brand-tinte);
+  color: var(--brand);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 .proyecto h3 {
