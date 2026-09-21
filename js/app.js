@@ -468,8 +468,39 @@ const TRAD = {
     setTimeout(() => html.classList.remove('cambiando-tema'), 350);
   };
 
-  const alternarTema = () =>
-    aplicarTema(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  /* Cambia de tema. Si el navegador soporta View Transitions (y hay movimiento
+     permitido), lo hace con un círculo que se expande desde el botón tocado;
+     si no, cae al cambio normal (aplicarTema ya trae su transición de respaldo). */
+  const alternarTema = (origen) => {
+    const nuevo = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (typeof document.startViewTransition !== 'function' || reduce) {
+      aplicarTema(nuevo);
+      return;
+    }
+
+    let x = window.innerWidth - 40;
+    let y = 40;
+    if (origen && origen.getBoundingClientRect) {
+      const r = origen.getBoundingClientRect();
+      x = r.left + r.width / 2;
+      y = r.top + r.height / 2;
+    }
+    const radio = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+
+    const vt = document.startViewTransition(() => aplicarTema(nuevo));
+    vt.ready.then(() => {
+      html.animate(
+        {
+          clipPath: [
+            'circle(0px at ' + x + 'px ' + y + 'px)',
+            'circle(' + radio + 'px at ' + x + 'px ' + y + 'px)'
+          ]
+        },
+        { duration: 500, easing: 'ease-in-out', pseudoElement: '::view-transition-new(root)' }
+      );
+    });
+  };
 
   /* Si el visitante no eligió tema, seguimos al del sistema */
   if (window.matchMedia) {
@@ -619,6 +650,35 @@ const TRAD = {
     });
   }
 
+  /* ---------- Aparición al hacer scroll ----------
+     La clase .reveal (que oculta el elemento) se agrega SOLO aquí, así que sin JS o
+     con "reducir movimiento" nada se oculta. [data-revelar] anima un elemento suelto;
+     [data-revelar-grupo] anima a sus hijos de forma escalonada. */
+  if (!sinMovimiento && 'IntersectionObserver' in window) {
+    const obsRevelar = new IntersectionObserver(
+      (entradas, obs) => {
+        entradas.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -8% 0px', threshold: 0.12 }
+    );
+
+    const revelar = (el, i = 0) => {
+      el.classList.add('reveal');
+      if (i) el.style.setProperty('--reveal-delay', i * 80 + 'ms');
+      obsRevelar.observe(el);
+    };
+
+    $$('[data-revelar]').forEach((el) => revelar(el));
+    $$('[data-revelar-grupo]').forEach((grupo) => {
+      Array.prototype.forEach.call(grupo.children, (hijo, i) => revelar(hijo, i));
+    });
+  }
+
   /* ---------- Scroll: cabecera compacta + barra de progreso ---------- */
   let pendiente = false;
   const alScroll = () => {
@@ -688,7 +748,7 @@ const TRAD = {
       const el = e.target.closest('[data-accion]');
       if (el) {
         switch (el.dataset.accion) {
-          case 'tema': alternarTema(); break;
+          case 'tema': alternarTema(el); break;
           case 'sonido': alternarSonido(); break;
           case 'hamburguesa': abrirMenu(!cabecera.classList.contains('abierto')); break;
           case 'idioma': aplicarIdioma(el.dataset.lang); break;

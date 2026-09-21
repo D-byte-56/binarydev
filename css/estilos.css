@@ -2,7 +2,8 @@
    Binarydev · estilos
    Índice: 1 Fuentes · 2 Tokens (claro/oscuro) · 3 Base · 4 Utilidades ·
    5 Cabecera · 6 Portada · 7 Nosotros · 8 Servicios · 9 Proceso ·
-   10 Proyectos · 11 Contacto · 12 Pie · 13 WhatsApp · 14 Responsive · 15 Movimiento
+   10 Proyectos · 11 Contacto · 12 Pie · 13 WhatsApp · 13b Aparición al scroll ·
+   14 Responsive · 15 Movimiento
    ========================================================================== */
 
 /* ===== 1. Fuentes (alojadas en /fonts) ===== */
@@ -29,23 +30,55 @@
 :root {
   color-scheme: light;
 
-  /* Modo claro: papel de plano técnico, tinta azul marino */
-  --bg: #f3f6fc;
-  --bg-2: #e8eef9;
-  --surface: #ffffff;
-  --ink: #0a1330;
-  --muted: #4d5b7c;
-  --line: #d5dff1;
-  --line-strong: #b4c4e4;
-  --brand: #0a52ff;
-  --brand-hover: #0840cc;
-  --brand-2: #10c0fa;
+  /* Modo claro: azul aire con acentos violeta y cian */
+  --bg: #e6eefb;
+  --bg-2: #dae6fa;
+  --surface: rgba(255, 255, 255, 0.72);   /* vidrio: se usa con backdrop-filter */
+  --surface-solida: #ffffff;               /* cuando hace falta opacidad total */
+  --ink: #0b1437;
+  --muted: #4a5578;
+  --line: rgba(37, 99, 235, 0.14);
+  --line-strong: rgba(37, 99, 235, 0.26);
+  --brand: #2563eb;
+  --brand-hover: #1d4fd8;
+  --brand-2: #06b6d4;
+  --accent-violet: #7c3aed;
+  --accent-cyan: #06b6d4;
+  --celeste: #38bdf8;                     /* líneas divisorias iluminadas */
+  --celeste-dim: rgba(56, 189, 248, 0.6);
+  --celeste-glow: rgba(56, 189, 248, 0.75);
   --on-brand: #ffffff;
-  --grid: rgba(10, 82, 255, 0.075);
-  --brand-tinte: rgba(10, 82, 255, 0.1);
-  --header-bg: rgba(243, 246, 252, 0.86);
-  --sombra: 0 18px 40px -22px rgba(10, 19, 48, 0.35);
+  --brand-tinte: rgba(37, 99, 235, 0.1);
+  --header-bg: rgba(244, 247, 255, 0.7);
+  --sombra: 0 18px 40px -22px rgba(11, 20, 55, 0.35);
+  --glow: 0 18px 44px -18px rgba(37, 99, 235, 0.4);
   --error: #c62a2a;
+
+  /* Gradiente de marca (azul → violeta → cian). Igual en ambos temas.
+     Se usa en botón principal, título del hero, íconos, menú y barra de scroll. */
+  --brand-gradient: linear-gradient(135deg, #2563eb 0%, #7c3aed 55%, #06b6d4 100%);
+  --grad-brand: var(--brand-gradient);
+  /* Gradiente solo azul→violeta para texto (evita el cian, que baja el contraste) */
+  --text-gradient: linear-gradient(100deg, var(--brand), var(--accent-violet) 55%, var(--brand));
+
+  /* Mesh del hero (claro): 3 focos de color + base vertical */
+  --hero-mesh:
+    radial-gradient(55% 45% at 10% 8%, rgba(59, 130, 246, 0.28), transparent 60%),
+    radial-gradient(45% 40% at 90% 15%, rgba(168, 85, 247, 0.22), transparent 60%),
+    radial-gradient(60% 50% at 50% 100%, rgba(34, 211, 238, 0.25), transparent 60%),
+    linear-gradient(180deg, #f4f7ff 0%, #e9eeff 100%);
+  --blob-1: rgba(37, 99, 235, 0.4);
+  --blob-2: rgba(139, 92, 246, 0.34);
+
+  /* Mesh que recorre toda la página (fijo al hacer scroll): da color y vida
+     más allá del hero. --alt-veil es el velo de las secciones alternas. */
+  --page-mesh:
+    radial-gradient(900px 650px at 100% 0%, rgba(124, 58, 237, 0.16), transparent 58%),
+    radial-gradient(820px 600px at 0% 26%, rgba(37, 99, 235, 0.18), transparent 55%),
+    radial-gradient(700px 520px at 100% 50%, rgba(15, 23, 42, 0.26), transparent 58%),
+    radial-gradient(860px 680px at 10% 92%, rgba(15, 23, 42, 0.2), transparent 62%);
+  /* Velo de secciones alternas: azul claro (NO blanco) sobre el mesh */
+  --alt-veil: rgba(198, 219, 252, 0.6);
 
   --f-titulo: 'Unbounded', 'Segoe UI', system-ui, sans-serif;
   --f-cuerpo: 'Onest', 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -59,23 +92,45 @@
 html[data-theme='dark'] {
   color-scheme: dark;
 
-  /* Modo oscuro: azul noche profundo, superficies azuladas */
-  --bg: #050915;
-  --bg-2: #081027;
-  --surface: #0b1433;
-  --ink: #e8eeff;
-  --muted: #98a8d0;
-  --line: #1a2757;
-  --line-strong: #2b3d7a;
-  --brand: #4d92ff;
-  --brand-hover: #7db0ff;
-  --brand-2: #27d3ff;
-  --on-brand: #041030;
-  --grid: rgba(77, 146, 255, 0.08);
-  --brand-tinte: rgba(77, 146, 255, 0.14);
-  --header-bg: rgba(5, 9, 21, 0.82);
+  /* Modo oscuro: azul noche con vida, acentos violeta y cian */
+  --bg: #060a1a;
+  --bg-2: #0a1128;
+  --surface: rgba(17, 25, 54, 0.6);        /* vidrio oscuro */
+  --surface-solida: #111936;
+  --ink: #eef2ff;
+  --muted: #a3aed0;
+  --line: rgba(120, 150, 255, 0.14);
+  --line-strong: rgba(120, 150, 255, 0.26);
+  --brand: #3b82f6;
+  --brand-hover: #60a5fa;
+  --brand-2: #22d3ee;
+  --accent-violet: #8b5cf6;
+  --accent-cyan: #22d3ee;
+  --celeste: #67e8f9;
+  --celeste-dim: rgba(103, 232, 249, 0.55);
+  --celeste-glow: rgba(103, 232, 249, 0.7);
+  --on-brand: #ffffff;
+  --brand-tinte: rgba(59, 130, 246, 0.16);
+  --header-bg: rgba(6, 10, 26, 0.7);
   --sombra: 0 18px 40px -20px rgba(0, 0, 0, 0.8);
+  --glow: 0 20px 48px -18px rgba(59, 130, 246, 0.6);
   --error: #ff7b7b;
+
+  /* Mesh del hero (oscuro): focos más intensos sobre base noche */
+  --hero-mesh:
+    radial-gradient(55% 45% at 12% 10%, rgba(37, 99, 235, 0.45), transparent 60%),
+    radial-gradient(45% 40% at 88% 18%, rgba(139, 92, 246, 0.38), transparent 60%),
+    radial-gradient(60% 50% at 55% 105%, rgba(34, 211, 238, 0.25), transparent 60%),
+    linear-gradient(180deg, #060a1a 0%, #0b1235 100%);
+  --blob-1: rgba(37, 99, 235, 0.5);
+  --blob-2: rgba(139, 92, 246, 0.42);
+
+  --page-mesh:
+    radial-gradient(900px 650px at 100% 0%, rgba(139, 92, 246, 0.2), transparent 58%),
+    radial-gradient(820px 600px at 0% 26%, rgba(37, 99, 235, 0.22), transparent 55%),
+    radial-gradient(760px 560px at 100% 55%, rgba(34, 211, 238, 0.12), transparent 55%),
+    radial-gradient(900px 700px at 15% 88%, rgba(139, 92, 246, 0.16), transparent 60%);
+  --alt-veil: rgba(6, 10, 26, 0.55);
 }
 
 /* ===== 3. Base ===== */
@@ -105,7 +160,12 @@ body {
   font-size: 1.0625rem;
   line-height: 1.65;
   color: var(--ink);
-  background: var(--bg);
+  /* Fondo: color base + mesh de color que recorre toda la página, fijo al scroll.
+     Las secciones normales lo dejan ver entero; las alternas ponen un velo encima. */
+  background-color: var(--bg);
+  background-image: var(--page-mesh);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -165,11 +225,19 @@ button {
   stroke: none;
 }
 
-/* Transición suave solo mientras se cambia de tema */
+/* Transición suave solo mientras se cambia de tema (respaldo sin View Transitions) */
 html.cambiando-tema *,
 html.cambiando-tema *::before,
 html.cambiando-tema *::after {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, fill 0.3s ease !important;
+}
+
+/* Cambio de tema con círculo que se expande (View Transitions API).
+   Anulamos el fundido por defecto; el clip circular lo anima el JS. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 
 /* ===== 4. Utilidades ===== */
@@ -250,13 +318,37 @@ html.cambiando-tema *::after {
   transform: translateY(-1px);
 }
 
+.btn:active {
+  transform: scale(0.97);
+}
+
 .btn--primario {
-  background: var(--brand);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--brand-gradient);
   color: var(--on-brand);
 }
 
-.btn--primario:hover {
-  background: var(--brand-hover);
+/* El texto y el ícono van sobre el brillo */
+.btn--primario > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Brillo que cruza el botón al pasar el mouse */
+.btn--primario::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.4) 50%, transparent 70%);
+  transform: translateX(-130%);
+  transition: transform 0.6s ease;
+}
+
+.btn--primario:hover::before {
+  transform: translateX(130%);
 }
 
 .btn--secundario {
@@ -292,9 +384,11 @@ html.cambiando-tema *::after {
   scroll-margin-top: 56px;
 }
 
+/* Sección alterna: un velo semitransparente sobre el mesh de la página.
+   Así se distingue de las normales (banda más calmada) sin tapar el color. */
 .seccion--alt {
-  background: var(--bg-2);
-  border-block: 1px solid var(--line);
+  background: var(--alt-veil);
+  border-block: 1px solid var(--celeste-dim);
 }
 
 .titulo {
@@ -304,6 +398,12 @@ html.cambiando-tema *::after {
   line-height: 1.15;
   letter-spacing: -0.02em;
   text-wrap: balance;
+  /* Título de sección con gradiente de marca (respaldo: color sólido) */
+  color: var(--brand);
+  background: var(--text-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .encabezado {
@@ -348,7 +448,7 @@ html.cambiando-tema *::after {
   z-index: 120;
   width: 100%;
   height: 3px;
-  background: linear-gradient(90deg, var(--brand-2), var(--brand));
+  background: var(--brand-gradient);
   transform: scaleX(0);
   transform-origin: 0 50%;
   pointer-events: none;
@@ -448,7 +548,7 @@ html.cambiando-tema *::after {
   bottom: 3px;
   height: 2px;
   border-radius: 2px;
-  background: var(--brand);
+  background: var(--brand-gradient);
   transform: scaleX(0);
   transform-origin: 0 50%;
   transition: transform 0.25s ease;
@@ -519,6 +619,15 @@ html.cambiando-tema *::after {
   border-color: var(--brand);
 }
 
+/* El ícono del tema (sol/luna) gira suavemente al pasar el mouse */
+.btn-icono[data-accion='tema'] .i {
+  transition: transform 0.4s ease;
+}
+
+.btn-icono[data-accion='tema']:hover .i {
+  transform: rotate(35deg);
+}
+
 /* Los pares de iconos alternan con el atributo del estado */
 .btn-icono .icono-mudo,
 .btn-icono[aria-pressed='true'] .icono-mudo,
@@ -568,22 +677,94 @@ html:not([data-theme='dark']) .icono-sol {
 /* ===== 6. Portada ===== */
 .portada {
   position: relative;
-  overflow: hidden;
+  overflow: hidden;      /* recorta los blobs: sin scroll horizontal */
+  isolation: isolate;    /* los blobs (z-index:-1) quedan sobre el mesh y bajo el contenido */
+  background: var(--hero-mesh);
   padding-top: calc(var(--cab-alto) + clamp(32px, 7vw, 88px));
   padding-bottom: clamp(64px, 9vw, 120px);
 }
 
-/* Plano cuadriculado: se desvanece hacia los bordes */
-.portada::before {
+/* Blobs de color que flotan lento detrás del contenido del hero */
+.portada::before,
+.portada::after {
   content: '';
   position: absolute;
-  inset: 0;
-  background-image: linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 44px 44px;
-  -webkit-mask-image: radial-gradient(ellipse 75% 85% at 70% 35%, #000 10%, transparent 75%);
-  mask-image: radial-gradient(ellipse 75% 85% at 70% 35%, #000 10%, transparent 75%);
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(80px);
   pointer-events: none;
+}
+
+.portada::before {
+  width: 42vw;
+  height: 42vw;
+  max-width: 520px;
+  max-height: 520px;
+  top: -8%;
+  left: -6%;
+  background: var(--blob-1);
+}
+
+.portada::after {
+  width: 38vw;
+  height: 38vw;
+  max-width: 460px;
+  max-height: 460px;
+  top: 0;
+  right: -6%;
+  background: var(--blob-2);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .portada::before { animation: flotar-1 22s ease-in-out infinite; }
+  .portada::after { animation: flotar-2 26s ease-in-out infinite; }
+
+  @keyframes flotar-1 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(26px, 32px); }
+  }
+
+  @keyframes flotar-2 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-30px, 22px); }
+  }
+}
+
+/* En móvil, blobs más pequeños y con menos blur (más fluido) */
+@media (max-width: 640px) {
+  .portada::before,
+  .portada::after {
+    filter: blur(50px);
+    max-width: 300px;
+    max-height: 300px;
+  }
+
+  /* Sin backdrop-filter en las tarjetas: superficie opaca (rinde mejor en teléfonos
+     y evita el recuadro del blur bajo el corte de esquina). */
+  .servicio,
+  .paquete,
+  .faq__item,
+  .contacto,
+  .proyecto__enlace,
+  .ventana {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: var(--surface-solida);
+  }
+}
+
+/* Si el navegador no soporta backdrop-filter, las superficies van opacas
+   (si no, el texto quedaría sobre un fondo translúcido y poco legible). */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .servicio,
+  .paquete,
+  .faq__item,
+  .contacto,
+  .proyecto__enlace,
+  .ventana,
+  .menu {
+    background: var(--surface-solida);
+  }
 }
 
 .portada__grid {
@@ -602,6 +783,24 @@ html:not([data-theme='dark']) .icono-sol {
   letter-spacing: -0.03em;
   text-wrap: balance;
   margin-bottom: 22px;
+  /* Texto con gradiente de marca (azul→violeta). color es el respaldo si no hay clip */
+  color: var(--brand);
+  background: var(--text-gradient);
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .portada h1 {
+    animation: brillo-titulo 8s ease-in-out infinite;
+  }
+
+  @keyframes brillo-titulo {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+  }
 }
 
 .portada__lema {
@@ -639,13 +838,38 @@ html:not([data-theme='dark']) .icono-sol {
 
 @media (prefers-reduced-motion: no-preference) {
   .portada__demo {
-    animation: demo-entra 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: demo-entra 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
     animation-delay: 0.15s;
   }
 
   @keyframes demo-entra {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; }
+    from { opacity: 0; transform: translateX(38px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  /* Flotación continua del mockup una vez que entró */
+  .portada__demo .ventana {
+    animation: flotar-demo 6s ease-in-out 1s infinite;
+  }
+
+  @keyframes flotar-demo {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* Entrada escalonada del texto del hero al cargar */
+  .portada__texto > * {
+    animation: subir 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .portada__texto > *:nth-child(1) { animation-delay: 0.05s; }
+  .portada__texto > *:nth-child(2) { animation-delay: 0.14s; }
+  .portada__texto > *:nth-child(3) { animation-delay: 0.23s; }
+  .portada__texto > *:nth-child(4) { animation-delay: 0.32s; }
+
+  @keyframes subir {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: none; }
   }
 }
 
@@ -653,6 +877,8 @@ html:not([data-theme='dark']) .icono-sol {
 .ventana {
   --c: 30px;
   background: var(--surface);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   box-shadow: var(--sombra);
   /* clip-path recorta la sombra: se aplica a un filtro para conservarla */
   filter: drop-shadow(0 22px 30px rgba(5, 12, 40, 0.16));
@@ -873,7 +1099,26 @@ html:not([data-theme='dark']) .icono-sol {
 }
 
 .principios {
-  border-left: 1px solid var(--line-strong);
+  position: relative;
+}
+
+/* Línea vertical celeste iluminada a la izquierda de los principios */
+.principios::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  border-radius: 2px;
+  background-image:
+    linear-gradient(180deg, transparent, var(--celeste), transparent),
+    linear-gradient(180deg, transparent, var(--celeste-dim), transparent);
+  background-size: 100% 38%, 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 0 -60%, 0 0;
+  box-shadow: 0 0 8px var(--celeste-glow);
+  animation: recorrer-y 4.5s linear infinite;
 }
 
 .principio {
@@ -882,7 +1127,7 @@ html:not([data-theme='dark']) .icono-sol {
 
 .principio + .principio {
   padding-top: 28px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--celeste-dim);
 }
 
 .principio:last-child {
@@ -913,6 +1158,9 @@ html:not([data-theme='dark']) .icono-sol {
 .servicio {
   padding: 30px 28px 32px;
   background: var(--surface);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s ease, filter 0.3s ease, border-color 0.3s ease;
 }
 
 .servicio__icono {
@@ -922,8 +1170,23 @@ html:not([data-theme='dark']) .icono-sol {
   height: 52px;
   margin-bottom: 20px;
   border-radius: 12px;
-  background: var(--brand-tinte);
-  color: var(--brand);
+  background: var(--brand-gradient);
+  color: #fff;
+  box-shadow: 0 10px 22px -10px var(--brand);
+  transition: transform 0.3s ease;
+}
+
+@media (hover: hover) {
+  .servicio:hover {
+    --corte-linea: var(--brand);
+    border-color: var(--brand);
+    transform: translateY(-6px);
+    filter: drop-shadow(var(--glow));
+  }
+
+  .servicio:hover .servicio__icono {
+    transform: rotate(-6deg) scale(1.06);
+  }
 }
 
 .servicio h3 {
@@ -986,6 +1249,18 @@ html:not([data-theme='dark']) .icono-sol {
   height: 100%;
   padding: 32px 28px;
   background: var(--surface);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s ease, filter 0.3s ease, border-color 0.3s ease;
+}
+
+@media (hover: hover) {
+  .paquete:hover {
+    --corte-linea: var(--brand);
+    border-color: var(--brand);
+    transform: translateY(-6px);
+    filter: drop-shadow(var(--glow));
+  }
 }
 
 /* La tarjeta del medio se resalta con el color de marca */
@@ -1002,7 +1277,7 @@ html:not([data-theme='dark']) .icono-sol {
   z-index: 4;
   padding: 4px 11px;
   border-radius: 999px;
-  background: var(--brand);
+  background: var(--brand-gradient);
   color: var(--on-brand);
   font-size: 0.72rem;
   font-weight: 700;
@@ -1027,7 +1302,7 @@ html:not([data-theme='dark']) .icono-sol {
 .paquete__precio {
   margin-top: 16px;
   padding-bottom: 18px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--celeste-dim);
   color: var(--ink);
   font-family: var(--f-titulo);
   font-weight: 500;
@@ -1052,6 +1327,73 @@ html:not([data-theme='dark']) .icono-sol {
   text-wrap: pretty;
 }
 
+/* ===== 8c. Recuadros: flotación + luz que recorre el borde =====
+   El ángulo --ang se anima con @property (navegadores modernos); sin soporte,
+   la luz queda estática. Todo dentro de "sin reducir movimiento". */
+@property --ang {
+  syntax: '<angle>';
+  initial-value: 0turn;
+  inherits: false;
+}
+
+@keyframes flotar-tarjeta {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -9px; }
+}
+
+@keyframes girar-borde {
+  to { --ang: 1turn; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Flotación suave; se usa la propiedad `translate` para no chocar con el
+     `transform` del hover (así ambos se combinan). Delays negativos = desfase. */
+  .servicio,
+  .paquete {
+    animation: flotar-tarjeta 6s ease-in-out infinite;
+  }
+
+  .servicio:nth-child(even) { animation-delay: -3s; }
+  .servicio:nth-child(3n) { animation-delay: -4.5s; }
+  .paquete:nth-child(2) { animation-delay: -2s; }
+  .paquete:nth-child(3) { animation-delay: -4s; }
+
+  /* Luz celeste que recorre el borde (anillo con conic-gradient + máscara) */
+  .servicio::after,
+  .paquete::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    padding: 1.6px;
+    background: conic-gradient(from var(--ang),
+      transparent 0turn, var(--celeste) 0.08turn, var(--celeste-glow) 0.11turn, transparent 0.24turn, transparent 1turn);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: girar-borde 5s linear infinite;
+  }
+
+  .paquete:nth-child(2)::after { animation-duration: 4s; }
+  .paquete:nth-child(3)::after { animation-duration: 6s; }
+}
+
+/* En móvil, sin flotación ni luz de borde (rendimiento) */
+@media (max-width: 640px) {
+  .servicio,
+  .paquete {
+    animation: none;
+    translate: none;
+  }
+
+  .servicio::after,
+  .paquete::after {
+    display: none;
+  }
+}
+
 /* ===== 9. Proceso ===== */
 .pasos {
   display: grid;
@@ -1062,7 +1404,40 @@ html:not([data-theme='dark']) .icono-sol {
 .paso {
   position: relative;
   padding-top: 36px;
-  border-top: 1px solid var(--line-strong);
+}
+
+/* Línea divisoria celeste con un brillo que la recorre (izq→der).
+   Dos capas: base celeste tenue (visible siempre) + destello que se desplaza. */
+.paso::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 2px;
+  background-image:
+    linear-gradient(90deg, transparent, var(--celeste), transparent),
+    linear-gradient(90deg, transparent, var(--celeste-dim), transparent);
+  background-size: 42% 100%, 100% 100%;
+  background-repeat: no-repeat;
+  background-position: -60% 0, 0 0;
+  box-shadow: 0 0 8px var(--celeste-glow);
+  animation: recorrer-x 3.2s linear infinite;
+}
+
+.paso:nth-child(2)::before { animation-delay: 0.4s; }
+.paso:nth-child(3)::before { animation-delay: 0.8s; }
+.paso:nth-child(4)::before { animation-delay: 1.2s; }
+
+@keyframes recorrer-x {
+  0% { background-position: -60% 0, 0 0; }
+  60%, 100% { background-position: 160% 0, 0 0; }
+}
+
+@keyframes recorrer-y {
+  0% { background-position: 0 -60%, 0 0; }
+  60%, 100% { background-position: 0 160%, 0 0; }
 }
 
 .paso__num {
@@ -1074,11 +1449,12 @@ html:not([data-theme='dark']) .icono-sol {
   width: 38px;
   height: 38px;
   border-radius: 10px;
-  background: var(--brand);
+  background: var(--grad-brand);
   color: var(--on-brand);
   font-family: var(--f-titulo);
   font-weight: 600;
   font-size: 0.95rem;
+  box-shadow: 0 8px 18px -8px var(--brand);
 }
 
 .paso h3 {
@@ -1152,6 +1528,8 @@ html[data-theme='dark'] .proyecto:focus-within {
   flex-direction: column;
   height: 100%;
   background: var(--surface);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   transform: rotateX(var(--rx)) rotateY(var(--ry));
   transition: transform 0.25s ease-out, border-color 0.3s ease;
   will-change: transform;
@@ -1169,9 +1547,29 @@ html[data-theme='dark'] .proyecto:focus-within {
 
 /* Ventana de navegador con la captura del sitio */
 .captura {
+  position: relative;
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid var(--line);
+}
+
+/* Línea celeste iluminada entre la captura y el texto (recorrido escalonado por tarjeta) */
+.captura::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  height: 2px;
+  background-image:
+    linear-gradient(90deg, transparent, var(--celeste), transparent),
+    linear-gradient(90deg, transparent, var(--celeste-dim), transparent);
+  background-size: 42% 100%, 100% 100%;
+  background-repeat: no-repeat;
+  background-position: -60% 0, 0 0;
+  box-shadow: 0 0 8px var(--celeste-glow);
+  animation: recorrer-x 3.4s linear infinite;
+  animation-delay: calc(var(--i, 0) * 0.35s);
 }
 
 .captura__barra {
@@ -1427,6 +1825,9 @@ html[data-theme='dark'] .proyecto:focus-within {
 .faq__item {
   --c: 18px;
   background: var(--surface);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  transition: border-color 0.3s ease;
 }
 
 .faq__cabeza {
@@ -1501,6 +1902,8 @@ html[data-theme='dark'] .proyecto:focus-within {
   gap: clamp(32px, 6vw, 72px);
   padding: clamp(28px, 5vw, 64px);
   background: var(--surface);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }
 
 .contacto__texto p {
@@ -1589,10 +1992,28 @@ html[data-theme='dark'] .proyecto:focus-within {
 
 /* ===== 12. Pie ===== */
 .pie {
+  position: relative;
   padding: 64px 0 32px;
-  border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 0.95rem;
+}
+
+/* Línea superior del pie: celeste iluminada que se recorre */
+.pie::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-image:
+    linear-gradient(90deg, transparent, var(--celeste), transparent),
+    linear-gradient(90deg, transparent, var(--celeste-dim), transparent);
+  background-size: 30% 100%, 100% 100%;
+  background-repeat: no-repeat;
+  background-position: -40% 0, 0 0;
+  box-shadow: 0 0 8px var(--celeste-glow);
+  animation: recorrer-x 4.5s linear infinite;
 }
 
 .pie__grid {
@@ -1659,7 +2080,7 @@ html[data-theme='dark'] .proyecto:focus-within {
   justify-content: space-between;
   gap: 8px 24px;
   padding-top: 24px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--celeste-dim);
   font-size: 0.88rem;
 }
 
@@ -1692,6 +2113,26 @@ html[data-theme='dark'] .proyecto:focus-within {
 
 .whatsapp-flotante:hover {
   transform: translateY(-3px) scale(1.05);
+}
+
+/* ===== 13b. Aparición al hacer scroll =====
+   El JS agrega la clase .reveal (solo si hay movimiento permitido) y luego .visible
+   cuando el elemento entra en pantalla. Sin JS o con "reducir movimiento" la clase
+   nunca se agrega, así que el contenido queda visible y estático. El escalonado de
+   las grillas lo fija el JS con --reveal-delay. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: var(--reveal-delay, 0s);
+    will-change: opacity, transform;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ===== 14. Responsive ===== */
@@ -1727,6 +2168,8 @@ html[data-theme='dark'] .proyecto:focus-within {
     gap: 2px;
     padding: 10px var(--gutter) 18px;
     background: var(--surface);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--line);
     box-shadow: 0 24px 40px -24px rgba(5, 12, 40, 0.5);
     visibility: hidden;
@@ -1811,8 +2254,22 @@ html[data-theme='dark'] .proyecto:focus-within {
 
   .paso {
     padding: 0 0 32px 44px;
-    border-top: 0;
-    border-left: 1px solid var(--line-strong);
+  }
+
+  /* En móvil la línea va vertical y el brillo baja */
+  .paso::before {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    width: 2px;
+    height: auto;
+    background-image:
+      linear-gradient(180deg, transparent, var(--celeste), transparent),
+      linear-gradient(180deg, transparent, var(--celeste-dim), transparent);
+    background-size: 100% 42%, 100% 100%;
+    background-position: 0 -60%, 0 0;
+    animation-name: recorrer-y;
   }
 
   .paso:last-child {
