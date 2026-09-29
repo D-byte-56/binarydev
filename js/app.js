@@ -650,6 +650,20 @@ const TRAD = {
     });
   }
 
+  /* En pantallas táctiles (sin hover) la captura se desliza sola en bucle
+     mientras la tarjeta está a la vista; con mouse se conserva el hover. */
+  if (!conMouse && !sinMovimiento && 'IntersectionObserver' in window) {
+    const obsVista = new IntersectionObserver(
+      (entradas) => {
+        entradas.forEach((e) => {
+          e.target.classList.toggle('en-vista', e.isIntersecting);
+        });
+      },
+      { threshold: 0.5 }
+    );
+    tarjetas.forEach((c) => obsVista.observe(c));
+  }
+
   /* ---------- Aparición al hacer scroll ----------
      La clase .reveal (que oculta el elemento) se agrega SOLO aquí, así que sin JS o
      con "reducir movimiento" nada se oculta. [data-revelar] anima un elemento suelto;

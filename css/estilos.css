@@ -1744,6 +1744,17 @@ html[data-theme='dark'] .proyecto:focus-within {
     padding: 7px 13px;
     font-size: 0.8rem;
   }
+
+  /* Sin hover, la captura se recorre sola en bucle mientras la tarjeta está
+     en pantalla (JS añade .en-vista). Ida y vuelta suave con 'alternate'. */
+  @keyframes captura-desliz {
+    from { object-position: 50% 0%; }
+    to   { object-position: 50% 100%; }
+  }
+
+  .proyecto.en-vista .captura__img {
+    animation: captura-desliz 5.5s ease-in-out infinite alternate;
+  }
 }
 
 .proyecto__cuerpo {
