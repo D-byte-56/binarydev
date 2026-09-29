@@ -34,6 +34,7 @@
   --bg: #e6eefb;
   --bg-2: #dae6fa;
   --surface: rgba(255, 255, 255, 0.72);   /* vidrio: se usa con backdrop-filter */
+  --surface-fuerte: rgba(255, 255, 255, 0.96); /* vidrio casi opaco: paneles sobre contenido */
   --surface-solida: #ffffff;               /* cuando hace falta opacidad total */
   --ink: #0b1437;
   --muted: #4a5578;
@@ -96,6 +97,7 @@ html[data-theme='dark'] {
   --bg: #060a1a;
   --bg-2: #0a1128;
   --surface: rgba(17, 25, 54, 0.6);        /* vidrio oscuro */
+  --surface-fuerte: rgba(15, 22, 50, 0.97); /* vidrio oscuro casi opaco: paneles sobre contenido */
   --surface-solida: #111936;
   --ink: #eef2ff;
   --muted: #a3aed0;
@@ -2167,10 +2169,10 @@ html[data-theme='dark'] .proyecto:focus-within {
     align-items: stretch;
     gap: 2px;
     padding: 10px var(--gutter) 18px;
-    background: var(--surface);
-    -webkit-backdrop-filter: blur(14px);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--line);
+    background: var(--surface-fuerte);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--line-strong);
     box-shadow: 0 24px 40px -24px rgba(5, 12, 40, 0.5);
     visibility: hidden;
     opacity: 0;
