@@ -8,6 +8,8 @@
    Requiere GSAP + ScrollTrigger (se cargan antes). Si no hay JS, GSAP o el
    visitante pidió "reducir movimiento", NO se toca nada: el HTML/CSS ya muestran
    la ventana armada y los títulos como una lista legible.
+   El movimiento se ajusta por tamaño con gsap.matchMedia: en celular la
+   inclinación y la separación son menores (capas más compactas).
    ========================================================================== */
 
 (function () {
@@ -28,13 +30,9 @@
   if (!pila || capas.length === 0 || caps.length === 0) return;
 
   var N_CAPAS = capas.length;        // 5
-  var PASO_Z = 74;                   // separación en Z entre capas (px)
-
-  // Cada capa al frente según su índice (0 = Diseño, al frente; 4 = Velocidad, al fondo)
-  function zDe(i) { return (N_CAPAS - 1 - i) * PASO_Z; }
 
   /* ---- Estado inicial (armado) aplicado con JS, nunca en CSS ---- */
-  gsap.set(pila, { rotateX: 0, rotateZ: 0, rotateY: 0, transformPerspective: 1500 });
+  gsap.set(pila, { rotateX: 0, rotateZ: 0, rotateY: 0, scale: 1, transformPerspective: 1500 });
   capas.forEach(function (capa) {
     gsap.set(capa, { z: 0, y: 0, x: 0, opacity: 1, transformOrigin: '50% 50%', willChange: 'transform' });
   });
@@ -65,38 +63,6 @@
     });
   }
 
-  /* ---- Timeline de la escena (transform) controlada por el scroll ----
-     Estructura temporal: [0–1] explota · [1–6] se mantiene y gira suave ·
-     [6–7] se vuelve a armar. El scrub mapea el scroll a estos 7 "tiempos". */
-  var tl = gsap.timeline({
-    defaults: { ease: 'power2.inOut' },
-    scrollTrigger: {
-      trigger: seccion,
-      start: 'top top',
-      end: 'bottom bottom',
-      scrub: 0.6,
-      onUpdate: function (self) { actualizar(self.progress); }
-    }
-  });
-
-  // Explosión (tilt del conjunto + separación de capas)
-  tl.to(pila, { rotateX: 54, rotateZ: -24, duration: 1 }, 0);
-  capas.forEach(function (capa) {
-    var i = +capa.dataset.capa;
-    tl.to(capa, { z: zDe(i), y: i * 20, x: i * -6, duration: 1 }, 0);
-  });
-  tl.to(tags, { opacity: 1, duration: 0.5, ease: 'none' }, 0.35);
-
-  // Se mantiene separado y gira muy despacio mientras se leen las capas
-  tl.to(pila, { rotateZ: -8, rotateY: 6, duration: 5, ease: 'none' }, 1);
-
-  // Se vuelve a armar + se ocultan las etiquetas
-  tl.to(pila, { rotateX: 0, rotateZ: 0, rotateY: 0, duration: 1 }, 6);
-  capas.forEach(function (capa) {
-    tl.to(capa, { z: 0, y: 0, x: 0, duration: 1 }, 6);
-  });
-  tl.to(tags, { opacity: 0, duration: 0.5, ease: 'none' }, 6);
-
   /* ---- Mapa de progreso → título + número + resaltado ---- */
   var EXPLODE = 0.12;   // hasta aquí: explotando (título 1)
   var REARMAR = 0.86;   // desde aquí: se arma + cierre
@@ -122,6 +88,51 @@
     if (progreso) gsap.set(progreso, { opacity: 1 });
     if (hint) gsap.set(hint, { opacity: 0 });
   }
+
+  /* ---- Timeline de la escena (transform) controlada por el scroll ----
+     Estructura temporal: [0–1] explota · [1–6] se mantiene y gira suave ·
+     [6–7] se vuelve a armar. El scrub mapea el scroll a estos 7 "tiempos".
+     Los parámetros (separación, inclinación, escala) cambian por tamaño. */
+  function construir(p) {
+    var tl = gsap.timeline({
+      defaults: { ease: 'power2.inOut' },
+      scrollTrigger: {
+        trigger: seccion,
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 0.6,
+        onUpdate: function (self) { actualizar(self.progress); }
+      }
+    });
+
+    // Explosión (tilt del conjunto + separación de capas)
+    tl.to(pila, { rotateX: p.rotX, rotateZ: p.rotZ, scale: p.scale, duration: 1 }, 0);
+    capas.forEach(function (capa) {
+      var i = +capa.dataset.capa;
+      tl.to(capa, { z: (N_CAPAS - 1 - i) * p.z, y: i * p.y, x: i * p.x, duration: 1 }, 0);
+    });
+    tl.to(tags, { opacity: 1, duration: 0.5, ease: 'none' }, 0.35);
+
+    // Se mantiene separado y gira muy despacio mientras se leen las capas
+    tl.to(pila, { rotateZ: p.rotZ2, rotateY: p.rotY, duration: 5, ease: 'none' }, 1);
+
+    // Se vuelve a armar + se ocultan las etiquetas
+    tl.to(pila, { rotateX: 0, rotateZ: 0, rotateY: 0, scale: 1, duration: 1 }, 6);
+    capas.forEach(function (capa) {
+      tl.to(capa, { z: 0, y: 0, x: 0, duration: 1 }, 6);
+    });
+    tl.to(tags, { opacity: 0, duration: 0.5, ease: 'none' }, 6);
+    return tl;
+  }
+
+  /* Escritorio: despiece amplio e inclinado. Celular: compacto, menos inclinación. */
+  var mm = gsap.matchMedia();
+  mm.add('(min-width: 901px)', function () {
+    construir({ z: 74, y: 20, x: -6, rotX: 54, rotZ: -24, rotZ2: -8, rotY: 6, scale: 1 });
+  });
+  mm.add('(max-width: 900px)', function () {
+    construir({ z: 34, y: 8, x: -3, rotX: 34, rotZ: -10, rotZ2: -6, rotY: 0, scale: 0.82 });
+  });
 
   // Recalcular medidas cuando todo cargó (fuentes, imágenes)
   window.addEventListener('load', function () { ScrollTrigger.refresh(); });
