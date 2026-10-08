@@ -7,12 +7,14 @@
    ========================================================================== */
 
 /* ===== 1. Fuentes (alojadas en /fonts) ===== */
+/* Display condensada y muy gruesa: para los títulos grandes (estilo cartel). */
 @font-face {
-  font-family: 'Unbounded';
-  src: url('../fonts/unbounded-latin-wght-normal.woff2') format('woff2');
-  font-weight: 200 900;
+  font-family: 'Anton';
+  src: url('../fonts/anton-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
   font-display: swap;
 }
+/* Sans legible: para subtítulos, wordmark y todo el texto normal. */
 @font-face {
   font-family: 'Onest';
   src: url('../fonts/onest-latin-wght-normal.woff2') format('woff2');
@@ -30,109 +32,68 @@
 :root {
   color-scheme: light;
 
-  /* Modo claro: azul aire con acentos violeta y cian */
-  --bg: #e6eefb;
-  --bg-2: #dae6fa;
-  --surface: rgba(255, 255, 255, 0.72);   /* vidrio: se usa con backdrop-filter */
+  /* Tema único (claro, cálido): naranja ámbar + azul del logo.
+     Todo el color del sitio sale de aquí; no hay colores "hardcodeados" fuera. */
+  --bg: #fbf6f0;                               /* blanco cálido */
+  --bg-2: #f3eadf;                             /* arena suave: secciones alternas y gradientes */
+  --surface: rgba(255, 255, 255, 0.72);        /* vidrio: se usa con backdrop-filter */
   --surface-fuerte: rgba(255, 255, 255, 0.96); /* vidrio casi opaco: paneles sobre contenido */
-  --surface-solida: #ffffff;               /* cuando hace falta opacidad total */
-  --ink: #0b1437;
-  --muted: #4a5578;
-  --line: rgba(37, 99, 235, 0.14);
-  --line-strong: rgba(37, 99, 235, 0.26);
-  --brand: #2563eb;
-  --brand-hover: #1d4fd8;
-  --brand-2: #06b6d4;
-  --accent-violet: #7c3aed;
-  --accent-cyan: #06b6d4;
-  --celeste: #38bdf8;                     /* líneas divisorias iluminadas */
-  --celeste-dim: rgba(56, 189, 248, 0.6);
-  --celeste-glow: rgba(56, 189, 248, 0.75);
+  --surface-solida: #ffffff;                   /* cuando hace falta opacidad total */
+  --ink: #1e140c;                              /* texto, casi negro cálido */
+  --muted: #6b5c4e;                            /* texto secundario cálido */
+  --line: rgba(30, 20, 12, 0.12);
+  --line-strong: rgba(30, 20, 12, 0.22);
+  --brand: #f26a1b;                            /* naranja ámbar: acento principal */
+  --brand-hover: #d1550a;
+  --brand-deep: #b4480a;                       /* naranja profundo: texto blanco encima (cumple AA) */
+  --brand-2: #1e6feb;                          /* azul del logo: color de apoyo */
+  --accent-blue: #1e6feb;
+  --accent-orange-hi: #ff8a3d;                 /* naranja brillante: gradientes y brillos */
+  --celeste: #4b93ff;                          /* líneas divisorias iluminadas (azul del logo) */
+  --celeste-dim: rgba(75, 147, 255, 0.55);
+  --celeste-glow: rgba(75, 147, 255, 0.7);
   --on-brand: #ffffff;
-  --brand-tinte: rgba(37, 99, 235, 0.1);
-  --header-bg: rgba(244, 247, 255, 0.7);
-  --sombra: 0 18px 40px -22px rgba(11, 20, 55, 0.35);
-  --glow: 0 18px 44px -18px rgba(37, 99, 235, 0.4);
+  --brand-tinte: rgba(242, 106, 27, 0.1);
+  --header-bg: rgba(251, 246, 240, 0.72);
+  --sombra: 0 18px 40px -22px rgba(60, 40, 20, 0.3);
+  --glow: 0 18px 44px -18px rgba(242, 106, 27, 0.4);
   --error: #c62a2a;
 
-  /* Gradiente de marca (azul → violeta → cian). Igual en ambos temas.
-     Se usa en botón principal, título del hero, íconos, menú y barra de scroll. */
-  --brand-gradient: linear-gradient(135deg, #2563eb 0%, #7c3aed 55%, #06b6d4 100%);
+  /* Gradiente de marca (naranja → naranja brillante → azul del logo).
+     Se usa en botón principal, íconos, menú y barra de scroll. */
+  --brand-gradient: linear-gradient(120deg, #f26a1b 0%, #ff8a3d 48%, #1e6feb 118%);
   --grad-brand: var(--brand-gradient);
-  /* Gradiente solo azul→violeta para texto (evita el cian, que baja el contraste) */
-  --text-gradient: linear-gradient(100deg, var(--brand), var(--accent-violet) 55%, var(--brand));
+  /* Gradiente para texto grande: naranjas profundos (cumplen AA en títulos grandes;
+     el naranja brillante sobre fondo claro NO pasa AA en texto, por eso va oscuro). */
+  --text-gradient: linear-gradient(100deg, #c2520a, #b4480a 55%, #d1550a);
 
-  /* Mesh del hero (claro): 3 focos de color + base vertical */
+  /* Mesh del hero (cálido): foco naranja + foco azul + base clara */
   --hero-mesh:
-    radial-gradient(55% 45% at 10% 8%, rgba(59, 130, 246, 0.28), transparent 60%),
-    radial-gradient(45% 40% at 90% 15%, rgba(168, 85, 247, 0.22), transparent 60%),
-    radial-gradient(60% 50% at 50% 100%, rgba(34, 211, 238, 0.25), transparent 60%),
-    linear-gradient(180deg, #f4f7ff 0%, #e9eeff 100%);
-  --blob-1: rgba(37, 99, 235, 0.4);
-  --blob-2: rgba(139, 92, 246, 0.34);
+    radial-gradient(55% 45% at 10% 8%, rgba(242, 106, 27, 0.22), transparent 60%),
+    radial-gradient(45% 40% at 90% 15%, rgba(30, 111, 235, 0.16), transparent 60%),
+    radial-gradient(60% 50% at 50% 100%, rgba(255, 138, 61, 0.20), transparent 60%),
+    linear-gradient(180deg, #fbf6f0 0%, #f3eadf 100%);
+  --blob-1: rgba(242, 106, 27, 0.34);
+  --blob-2: rgba(30, 111, 235, 0.26);
 
   /* Mesh que recorre toda la página (fijo al hacer scroll): da color y vida
      más allá del hero. --alt-veil es el velo de las secciones alternas. */
   --page-mesh:
-    radial-gradient(900px 650px at 100% 0%, rgba(124, 58, 237, 0.16), transparent 58%),
-    radial-gradient(820px 600px at 0% 26%, rgba(37, 99, 235, 0.18), transparent 55%),
-    radial-gradient(700px 520px at 100% 50%, rgba(15, 23, 42, 0.26), transparent 58%),
-    radial-gradient(860px 680px at 10% 92%, rgba(15, 23, 42, 0.2), transparent 62%);
-  /* Velo de secciones alternas: azul claro (NO blanco) sobre el mesh */
-  --alt-veil: rgba(198, 219, 252, 0.6);
+    radial-gradient(900px 650px at 100% 0%, rgba(242, 106, 27, 0.12), transparent 58%),
+    radial-gradient(820px 600px at 0% 26%, rgba(30, 111, 235, 0.12), transparent 55%),
+    radial-gradient(700px 520px at 100% 50%, rgba(30, 20, 12, 0.07), transparent 58%),
+    radial-gradient(860px 680px at 10% 92%, rgba(30, 20, 12, 0.05), transparent 62%);
+  /* Velo de secciones alternas: arena cálida (NO blanco plano) sobre el mesh */
+  --alt-veil: rgba(243, 234, 223, 0.6);
 
-  --f-titulo: 'Unbounded', 'Segoe UI', system-ui, sans-serif;
+  --f-display: 'Anton', 'Arial Narrow', 'Segoe UI', system-ui, sans-serif;
+  --f-titulo: 'Onest', 'Segoe UI', system-ui, sans-serif;
   --f-cuerpo: 'Onest', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --f-codigo: 'JetBrains Mono', ui-monospace, Consolas, monospace;
 
   --cab-alto: 76px;
   --ancho: 1160px;
   --gutter: clamp(20px, 4vw, 40px);
-}
-
-html[data-theme='dark'] {
-  color-scheme: dark;
-
-  /* Modo oscuro: azul noche con vida, acentos violeta y cian */
-  --bg: #060a1a;
-  --bg-2: #0a1128;
-  --surface: rgba(17, 25, 54, 0.6);        /* vidrio oscuro */
-  --surface-fuerte: rgba(15, 22, 50, 0.97); /* vidrio oscuro casi opaco: paneles sobre contenido */
-  --surface-solida: #111936;
-  --ink: #eef2ff;
-  --muted: #a3aed0;
-  --line: rgba(120, 150, 255, 0.14);
-  --line-strong: rgba(120, 150, 255, 0.26);
-  --brand: #3b82f6;
-  --brand-hover: #60a5fa;
-  --brand-2: #22d3ee;
-  --accent-violet: #8b5cf6;
-  --accent-cyan: #22d3ee;
-  --celeste: #67e8f9;
-  --celeste-dim: rgba(103, 232, 249, 0.55);
-  --celeste-glow: rgba(103, 232, 249, 0.7);
-  --on-brand: #ffffff;
-  --brand-tinte: rgba(59, 130, 246, 0.16);
-  --header-bg: rgba(6, 10, 26, 0.7);
-  --sombra: 0 18px 40px -20px rgba(0, 0, 0, 0.8);
-  --glow: 0 20px 48px -18px rgba(59, 130, 246, 0.6);
-  --error: #ff7b7b;
-
-  /* Mesh del hero (oscuro): focos más intensos sobre base noche */
-  --hero-mesh:
-    radial-gradient(55% 45% at 12% 10%, rgba(37, 99, 235, 0.45), transparent 60%),
-    radial-gradient(45% 40% at 88% 18%, rgba(139, 92, 246, 0.38), transparent 60%),
-    radial-gradient(60% 50% at 55% 105%, rgba(34, 211, 238, 0.25), transparent 60%),
-    linear-gradient(180deg, #060a1a 0%, #0b1235 100%);
-  --blob-1: rgba(37, 99, 235, 0.5);
-  --blob-2: rgba(139, 92, 246, 0.42);
-
-  --page-mesh:
-    radial-gradient(900px 650px at 100% 0%, rgba(139, 92, 246, 0.2), transparent 58%),
-    radial-gradient(820px 600px at 0% 26%, rgba(37, 99, 235, 0.22), transparent 55%),
-    radial-gradient(760px 560px at 100% 55%, rgba(34, 211, 238, 0.12), transparent 55%),
-    radial-gradient(900px 700px at 15% 88%, rgba(139, 92, 246, 0.16), transparent 60%);
-  --alt-veil: rgba(6, 10, 26, 0.55);
 }
 
 /* ===== 3. Base ===== */
@@ -225,21 +186,6 @@ button {
 .i--relleno {
   fill: currentColor;
   stroke: none;
-}
-
-/* Transición suave solo mientras se cambia de tema (respaldo sin View Transitions) */
-html.cambiando-tema *,
-html.cambiando-tema *::before,
-html.cambiando-tema *::after {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, fill 0.3s ease !important;
-}
-
-/* Cambio de tema con círculo que se expande (View Transitions API).
-   Anulamos el fundido por defecto; el clip circular lo anima el JS. */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
 }
 
 /* ===== 4. Utilidades ===== */
@@ -394,14 +340,15 @@ html.cambiando-tema *::after {
 }
 
 .titulo {
-  font-family: var(--f-titulo);
-  font-weight: 500;
-  font-size: clamp(1.6rem, 1.05rem + 2.1vw, 2.5rem);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-family: var(--f-display);
+  font-weight: 400; /* Anton es una sola variante, muy gruesa */
+  font-size: clamp(1.9rem, 1.1rem + 2.8vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
   text-wrap: balance;
   /* Título de sección con gradiente de marca (respaldo: color sólido) */
-  color: var(--brand);
+  color: var(--brand-deep);
   background: var(--text-gradient);
   -webkit-background-clip: text;
   background-clip: text;
@@ -621,20 +568,9 @@ html.cambiando-tema *::after {
   border-color: var(--brand);
 }
 
-/* El ícono del tema (sol/luna) gira suavemente al pasar el mouse */
-.btn-icono[data-accion='tema'] .i {
-  transition: transform 0.4s ease;
-}
-
-.btn-icono[data-accion='tema']:hover .i {
-  transform: rotate(35deg);
-}
-
-/* Los pares de iconos alternan con el atributo del estado */
+/* El botón de sonido alterna sus iconos según el estado (aria-pressed) */
 .btn-icono .icono-mudo,
-.btn-icono[aria-pressed='true'] .icono-mudo,
-html[data-theme='dark'] .icono-luna,
-html:not([data-theme='dark']) .icono-sol {
+.btn-icono[aria-pressed='true'] .icono-mudo {
   display: none;
 }
 
@@ -778,15 +714,16 @@ html:not([data-theme='dark']) .icono-sol {
 }
 
 .portada h1 {
-  font-family: var(--f-titulo);
-  font-weight: 600;
-  font-size: clamp(2rem, 1.1rem + 3.4vw, 3.5rem);
-  line-height: 1.08;
-  letter-spacing: -0.03em;
+  font-family: var(--f-display);
+  font-weight: 400; /* Anton es una sola variante, muy gruesa */
+  font-size: clamp(2.4rem, 1.2rem + 4.4vw, 4.2rem);
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
   text-wrap: balance;
   margin-bottom: 22px;
-  /* Texto con gradiente de marca (azul→violeta). color es el respaldo si no hay clip */
-  color: var(--brand);
+  /* Texto con gradiente de marca (naranjas profundos). color es el respaldo si no hay clip */
+  color: var(--brand-deep);
   background: var(--text-gradient);
   background-size: 220% auto;
   -webkit-background-clip: text;
@@ -1501,11 +1438,6 @@ html:not([data-theme='dark']) .icono-sol {
 .proyecto:hover,
 .proyecto:focus-within {
   filter: drop-shadow(0 22px 30px rgba(10, 19, 48, 0.2));
-}
-
-html[data-theme='dark'] .proyecto:hover,
-html[data-theme='dark'] .proyecto:focus-within {
-  filter: drop-shadow(0 22px 34px rgba(0, 0, 0, 0.6));
 }
 
 /* Entrada escalonada (la clase .animar la pone app.js) */

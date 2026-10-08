@@ -7,15 +7,17 @@ o sube la carpeta completa a cualquier hosting.
 binarydev/
 ├── index.html          # Estructura y textos base (español)
 ├── favicon.ico
-├── css/estilos.css     # Colores, tipografías, componentes y responsive
-├── js/app.js           # CONFIG (tus datos), traducciones ES/EN y comportamiento
+├── css/estilos.css     # Colores (tokens), tipografías, componentes y responsive
+├── js/app.js           # Comportamiento (idioma, menú, scroll, proyectos, formulario)
+├── js/data/config.js   # CONFIG: tus datos (WhatsApp, correo, redes, ciudad)
+├── js/data/i18n.js     # TRAD: todos los textos en español e inglés
 ├── img/                # logo-mark.png (tu logo), favicon-32.png, apple-touch-icon.png
-└── fonts/              # Unbounded, Onest y JetBrains Mono (alojadas en el sitio)
+└── fonts/              # Anton (títulos), Onest (texto) y JetBrains Mono (código)
 ```
 
 ## 1. Datos de contacto (lo primero que debes editar)
 
-Todo está en el objeto `CONFIG` al inicio de `js/app.js`:
+Todo está en el objeto `CONFIG` en `js/data/config.js`:
 
 | Campo | Qué es |
 | --- | --- |
@@ -29,20 +31,22 @@ Actualmente `telefono`, `correo` y `redes` tienen valores de ejemplo: cámbialos
 
 ## 2. Textos e idiomas
 
-Los textos en español e inglés están en `TRAD` (`js/app.js`). Cada elemento del HTML tiene
+Los textos en español e inglés están en `TRAD` (`js/data/i18n.js`). Cada elemento del HTML tiene
 `data-i18n="clave"`; edita esa clave **en ambos idiomas**. Marcadores disponibles: `{empresa}`,
 `{ciudad}`, `{pais}`. Los textos con negritas usan `data-i18n-html`.
 
 ## 3. Logo
 
-La barra usa `img/logo-mark.png` (isotipo recortado de tu PNG) junto al nombre "BINARY DEV" en texto,
-que cambia de color según el tema. Para cambiar el logo, reemplaza ese archivo (alto recomendado: 132 px)
+La barra usa `img/logo-mark.png` (isotipo recortado de tu PNG) junto al nombre "BINARY DEV" en texto
+("BINARY" en el color del texto y "DEV" con el degradado azul→naranja de marca). Para cambiar el logo,
+reemplaza ese archivo (alto recomendado: 132 px)
 y ajusta `width`/`height` en las etiquetas `<img class="marca__img">`.
 
 ## 4. Colores
 
-En `css/estilos.css`, sección "Tokens": `:root` es el modo claro y `html[data-theme='dark']` el oscuro.
-Cambia solo esas variables (`--bg`, `--surface`, `--ink`, `--brand`, ...) y todo el sitio se actualiza.
+En `css/estilos.css`, sección "Tokens": hay **un solo tema** (claro, cálido) en `:root`.
+Cambia solo esas variables (`--bg`, `--surface`, `--ink`, `--brand`, `--brand-2`, ...) y todo el
+sitio se actualiza. El acento principal es el naranja `--brand`; el azul del logo es `--brand-2`.
 
 ## 5. Proyectos
 
@@ -91,7 +95,7 @@ Arma un mensaje con nombre, empresa, servicio y detalle, y abre WhatsApp con él
 
 ## 7. Funciones incluidas
 
-Modo claro/oscuro (respeta el del sistema y se recuerda), idioma ES/EN, sonido de clics activable,
+Idioma ES/EN (se recuerda), sonido de clics activable,
 menú hamburguesa en móvil (cierra con Escape o al tocar fuera), cabecera compacta al bajar,
 sección activa resaltada, barra de progreso de scroll, WhatsApp flotante, respeto de
 `prefers-reduced-motion` y navegación por teclado.

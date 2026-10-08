@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Binarydev · Creación de sitios web para empresas</title>
   <meta name="description" content="Binarydev diseña y desarrolla sitios web, tiendas en línea y aplicaciones a medida para empresas. Diseño profesional, rápido y adaptable a celulares.">
-  <meta name="theme-color" content="#f3f6fc">
+  <meta name="theme-color" content="#fbf6f0">
   <link rel="canonical" href="https://d-byte-56.github.io/binarydev/">
 
   <!-- Open Graph (Facebook, WhatsApp, LinkedIn…) -->
@@ -64,7 +64,7 @@
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 
   <!-- Fuentes alojadas en el propio sitio (sin peticiones a Google) -->
-  <link rel="preload" href="fonts/unbounded-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/onest-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Marca que JS animará el hero (solo si el visitante no pidió reducir movimiento).
@@ -81,18 +81,12 @@
 
   <link rel="stylesheet" href="css/estilos.css">
 
-  <!-- Aplica tema e idioma guardados antes del primer pintado (evita parpadeos) -->
+  <!-- Aplica el idioma guardado antes del primer pintado (evita parpadeos) -->
   <script>
     (function () {
       try {
-        var d = document.documentElement;
-        var t = localStorage.getItem('tema');
-        if (t !== 'dark' && t !== 'light') {
-          t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        }
-        d.setAttribute('data-theme', t);
         var l = localStorage.getItem('idioma');
-        if (l === 'es' || l === 'en') d.setAttribute('lang', l);
+        if (l === 'es' || l === 'en') document.documentElement.setAttribute('lang', l);
       } catch (e) {}
     })();
   </script>
@@ -111,8 +105,6 @@
       <symbol id="i-externo" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
       <symbol id="i-flecha" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
       <symbol id="i-correo" viewBox="0 0 24 24"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 7 9 6.5L21 7"/></symbol>
-      <symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
-      <symbol id="i-luna" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
       <symbol id="i-volumen" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></symbol>
       <symbol id="i-mudo" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="m22 9-6 6M16 9l6 6"/></symbol>
       <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M13.5 22v-8.2h2.8l.5-3.4h-3.3V8.3c0-1 .5-1.8 1.9-1.8h1.5V3.6c-.3 0-1.2-.2-2.3-.2-2.7 0-4.5 1.6-4.5 4.6v2.4H7v3.4h3.1V22h3.4z"/></symbol>
@@ -154,11 +146,6 @@
         <button type="button" class="btn-icono" data-accion="sonido" aria-pressed="false" aria-label="Activar sonidos de clic">
           <svg class="i icono-volumen" width="20" height="20" aria-hidden="true"><use href="#i-volumen"/></svg>
           <svg class="i icono-mudo" width="20" height="20" aria-hidden="true"><use href="#i-mudo"/></svg>
-        </button>
-
-        <button type="button" class="btn-icono" data-accion="tema" aria-label="Cambiar modo oscuro/claro">
-          <svg class="i icono-luna" width="20" height="20" aria-hidden="true"><use href="#i-luna"/></svg>
-          <svg class="i icono-sol" width="20" height="20" aria-hidden="true"><use href="#i-sol"/></svg>
         </button>
 
         <button type="button" class="hamburguesa" data-accion="hamburguesa" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
@@ -491,33 +478,8 @@
               </div>
             </a>
           </article>
-          <!-- Proyecto 4: Romero's Lawn Service -->
-          <article class="proyecto" style="--i:3; --acc:#1f7a3a">
-            <a class="proyecto__enlace corte" href="https://romeroslawnservicesllc.com/" target="_blank" rel="noopener noreferrer">
-              <div class="captura" aria-hidden="true">
-                <div class="captura__barra">
-                  <span class="puntos"><i></i><i></i><i></i></span>
-                  <span class="captura__url">romeroslawnservicesllc.com</span>
-                  <svg class="i" width="14" height="14"><use href="#i-externo"/></svg>
-                </div>
-                <div class="captura__pantalla">
-                  <img class="captura__img" src="img/proyectos/romeros.webp" alt="" width="900" height="1500" loading="lazy" decoding="async" data-captura>
-                  <span class="captura__respaldo">Romero's Lawn Service</span>
-                  <span class="captura__brillo"></span>
-                  <span class="captura__cta"><span data-i18n="visit_site">Visitar sitio</span><svg class="i" width="16" height="16"><use href="#i-externo"/></svg></span>
-                </div>
-              </div>
-              <div class="proyecto__cuerpo">
-                <span class="proyecto__sector" data-i18n="p4_sector">Paisajismo</span>
-                <h3><span data-i18n="p4_title">Romero's Lawn Service</span><svg class="i proyecto__flecha" width="20" height="20" aria-hidden="true"><use href="#i-externo"/></svg></h3>
-                <p data-i18n="p4_desc">Sitio bilingüe para una empresa de jardinería en Banning, California, con servicios, galería y cotizaciones gratis.</p>
-                <ul class="etiquetas"><li>WordPress</li><li>Elementor</li></ul>
-                <span class="solo-lector" data-i18n="new_tab">(se abre en una pestaña nueva)</span>
-              </div>
-            </a>
-          </article>
-          <!-- Proyecto 5: EV Lawncare -->
-          <article class="proyecto" style="--i:4; --acc:#3f7d2a">
+          <!-- Proyecto 4: EV Lawncare -->
+          <article class="proyecto" style="--i:3; --acc:#3f7d2a">
             <a class="proyecto__enlace corte" href="https://evlawncaregainc.net/" target="_blank" rel="noopener noreferrer">
               <div class="captura" aria-hidden="true">
                 <div class="captura__barra">
@@ -533,9 +495,9 @@
                 </div>
               </div>
               <div class="proyecto__cuerpo">
-                <span class="proyecto__sector" data-i18n="p5_sector">Paisajismo</span>
-                <h3><span data-i18n="p5_title">EV Lawncare</span><svg class="i proyecto__flecha" width="20" height="20" aria-hidden="true"><use href="#i-externo"/></svg></h3>
-                <p data-i18n="p5_desc">Servicios de árboles, hardscapes, riego y cercas en Cumming, Georgia, con estimados gratis y contacto por mensaje.</p>
+                <span class="proyecto__sector" data-i18n="p4_sector">Paisajismo</span>
+                <h3><span data-i18n="p4_title">EV Lawncare</span><svg class="i proyecto__flecha" width="20" height="20" aria-hidden="true"><use href="#i-externo"/></svg></h3>
+                <p data-i18n="p4_desc">Servicios de árboles, hardscapes, riego y cercas en Cumming, Georgia, con estimados gratis y contacto por mensaje.</p>
                 <ul class="etiquetas"><li>HTML</li><li>Tailwind CSS</li><li>JavaScript</li></ul>
                 <span class="solo-lector" data-i18n="new_tab">(se abre en una pestaña nueva)</span>
               </div>
@@ -726,6 +688,9 @@
     <svg class="i i--relleno" width="28" height="28" aria-hidden="true"><use href="#i-whatsapp"/></svg>
   </a>
 
+  <!-- Datos y textos (se cargan antes que app.js; defer conserva el orden) -->
+  <script src="js/data/config.js" defer></script>
+  <script src="js/data/i18n.js" defer></script>
   <script src="js/app.js" defer></script>
 </body>
 </html>
