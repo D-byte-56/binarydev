@@ -67,18 +67,6 @@
   <link rel="preload" href="fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/onest-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
-  <!-- Marca que JS animará el hero (solo si el visitante no pidió reducir movimiento).
-       Debe ir antes del CSS para que la ventana del hero ya nazca oculta y no parpadee. -->
-  <script>
-    (function () {
-      try {
-        if (!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
-          document.documentElement.classList.add('hero-js');
-        }
-      } catch (e) {}
-    })();
-  </script>
-
   <link rel="stylesheet" href="css/estilos.css">
 
   <!-- Aplica el idioma guardado antes del primer pintado (evita parpadeos) -->
@@ -136,6 +124,7 @@
         <a href="#paquetes" data-seccion="paquetes" data-i18n="nav_packages">Paquetes</a>
         <a href="#proceso" data-seccion="proceso" data-i18n="nav_process">Proceso</a>
         <a href="#proyectos" data-seccion="proyectos" data-i18n="nav_projects">Proyectos</a>
+        <a href="#hosting" data-seccion="hosting" data-i18n="nav_hosting">Hosting</a>
         <a href="#contacto" data-seccion="contacto" data-i18n="nav_contact">Contacto</a>
       </nav>
 
@@ -579,6 +568,78 @@
       </div>
     </section>
 
+    <!-- ===== Lo que va incluido (refuerza las capas del hero) ===== -->
+    <section class="seccion" id="incluido" data-seccion-obs="incluido" aria-labelledby="t-incluido">
+      <div class="contenedor">
+        <div class="encabezado" data-revelar>
+          <h2 class="titulo" id="t-incluido" data-i18n="included_title">En cada sitio va incluido</h2>
+          <p class="encabezado__texto" data-i18n="included_sub">Eso que viste separarse en capas no es un extra: va en todos nuestros proyectos.</p>
+        </div>
+
+        <ul class="incluido" data-revelar-grupo>
+          <li class="incluido__item corte">
+            <span class="incluido__icono"><svg class="i" width="24" height="24" aria-hidden="true"><use href="#i-web"/></svg></span>
+            <h3 data-i18n="inc1_title">Diseño para celular</h3>
+            <p data-i18n="inc1_text">Se ve y funciona bien en celular, tableta y computadora.</p>
+          </li>
+          <li class="incluido__item corte">
+            <span class="incluido__icono"><svg class="i" width="24" height="24" aria-hidden="true"><use href="#i-candado"/></svg></span>
+            <h3 data-i18n="inc2_title">Seguridad</h3>
+            <p data-i18n="inc2_text">HTTPS, buenas prácticas y los datos de tus clientes protegidos.</p>
+          </li>
+          <li class="incluido__item corte">
+            <span class="incluido__icono"><svg class="i" width="24" height="24" aria-hidden="true"><use href="#i-lupa"/></svg></span>
+            <h3 data-i18n="inc3_title">SEO básico</h3>
+            <p data-i18n="inc3_text">Estructura y textos pensados para que Google te encuentre.</p>
+          </li>
+          <li class="incluido__item corte">
+            <span class="incluido__icono"><svg class="i" width="24" height="24" aria-hidden="true"><use href="#i-rapido"/></svg></span>
+            <h3 data-i18n="inc4_title">Velocidad</h3>
+            <p data-i18n="inc4_text">Carga veloz, incluso con internet lento.</p>
+          </li>
+          <li class="incluido__item corte">
+            <span class="incluido__icono"><svg class="i" width="24" height="24" aria-hidden="true"><use href="#i-check"/></svg></span>
+            <h3 data-i18n="inc5_title">Accesibilidad</h3>
+            <p data-i18n="inc5_text">Pensado para que más personas puedan usarlo sin barreras.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Hosting ===== -->
+    <section class="seccion seccion--alt" id="hosting" data-seccion-obs="hosting" aria-labelledby="t-hosting">
+      <div class="contenedor">
+        <div class="encabezado" data-revelar>
+          <h2 class="titulo" id="t-hosting" data-i18n="hosting_title">Hosting y mantenimiento</h2>
+          <p class="encabezado__texto" data-i18n="hosting_sub">Dos formas de trabajarlo; eliges la que más te acomode.</p>
+        </div>
+
+        <div class="hosting" data-revelar-grupo>
+          <article class="hosting__card corte">
+            <h3 class="hosting__nombre" data-i18n="host1_title">Con tu propio hosting</h3>
+            <p data-i18n="host1_text">Usas tu propio hosting y dominio, siempre a tu nombre. Nosotros te asesoramos, lo dejamos configurado y le damos mantenimiento.</p>
+            <ul class="lista-check">
+              <li><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="host1_a">El dominio y el hosting quedan a tu nombre</span></li>
+              <li><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="host1_b">Te asesoramos para elegir y configurar todo</span></li>
+              <li><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="host1_c">Mantenimiento mensual opcional</span></li>
+            </ul>
+          </article>
+
+          <article class="hosting__card corte">
+            <h3 class="hosting__nombre" data-i18n="host2_title">Lo alojamos nosotros</h3>
+            <p data-i18n="host2_text">Nos encargamos del hosting con una mensualidad. Si algún día dejas el servicio, tu sitio se puede transferir sin problema.</p>
+            <ul class="lista-check">
+              <li><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="host2_a">Nosotros vemos el hosting y las copias de seguridad</span></li>
+              <li><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="host2_b">Mantenimiento y actualizaciones incluidos</span></li>
+              <li><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="host2_c">El sitio se puede transferir si dejas el servicio</span></li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="hosting__nota" data-i18n="hosting_note">El mantenimiento cubre que tu sitio siga funcionando, actualizado y seguro. No incluye rediseños ni secciones nuevas; eso se cotiza aparte.</p>
+      </div>
+    </section>
+
     <!-- ===== Preguntas frecuentes ===== -->
     <section class="seccion" id="faq" data-seccion-obs="faq" aria-labelledby="t-faq">
       <div class="contenedor contenedor--angosto">
@@ -737,6 +798,7 @@
         <a href="#servicios" data-i18n="nav_services">Servicios</a>
         <a href="#proceso" data-i18n="nav_process">Proceso</a>
         <a href="#proyectos" data-i18n="nav_projects">Proyectos</a>
+        <a href="#hosting" data-i18n="nav_hosting">Hosting</a>
         <a href="#contacto" data-i18n="nav_contact">Contacto</a>
       </nav>
 
@@ -751,7 +813,7 @@
     </div>
 
     <div class="contenedor">
-      <p class="pie__copy"><span>&copy; <span id="anio">2026</span> Binarydev. <span data-i18n="footer_rights">Todos los derechos reservados.</span></span></p>
+      <p class="pie__copy"><span>&copy; <span id="anio">2026</span> Binarydev. <span data-i18n="footer_rights">Todos los derechos reservados.</span></span><a href="privacidad.html" data-i18n="footer_privacy">Política de privacidad</a></p>
     </div>
   </footer>
 

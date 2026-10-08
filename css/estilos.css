@@ -611,400 +611,6 @@ button {
   transform: translateY(-6px) rotate(-45deg);
 }
 
-/* ===== 6. Portada ===== */
-.portada {
-  position: relative;
-  overflow: hidden;      /* recorta los blobs: sin scroll horizontal */
-  isolation: isolate;    /* los blobs (z-index:-1) quedan sobre el mesh y bajo el contenido */
-  background: var(--hero-mesh);
-  padding-top: calc(var(--cab-alto) + clamp(32px, 7vw, 88px));
-  padding-bottom: clamp(64px, 9vw, 120px);
-}
-
-/* Blobs de color que flotan lento detrás del contenido del hero */
-.portada::before,
-.portada::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-}
-
-.portada::before {
-  width: 42vw;
-  height: 42vw;
-  max-width: 520px;
-  max-height: 520px;
-  top: -8%;
-  left: -6%;
-  background: var(--blob-1);
-}
-
-.portada::after {
-  width: 38vw;
-  height: 38vw;
-  max-width: 460px;
-  max-height: 460px;
-  top: 0;
-  right: -6%;
-  background: var(--blob-2);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .portada::before { animation: flotar-1 22s ease-in-out infinite; }
-  .portada::after { animation: flotar-2 26s ease-in-out infinite; }
-
-  @keyframes flotar-1 {
-    0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(26px, 32px); }
-  }
-
-  @keyframes flotar-2 {
-    0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(-30px, 22px); }
-  }
-}
-
-/* En móvil, blobs más pequeños y con menos blur (más fluido) */
-@media (max-width: 640px) {
-  .portada::before,
-  .portada::after {
-    filter: blur(50px);
-    max-width: 300px;
-    max-height: 300px;
-  }
-
-  /* Sin backdrop-filter en las tarjetas: superficie opaca (rinde mejor en teléfonos
-     y evita el recuadro del blur bajo el corte de esquina). */
-  .servicio,
-  .paquete,
-  .faq__item,
-  .contacto,
-  .proyecto__enlace,
-  .ventana {
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-    background: var(--surface-solida);
-  }
-}
-
-/* Si el navegador no soporta backdrop-filter, las superficies van opacas
-   (si no, el texto quedaría sobre un fondo translúcido y poco legible). */
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .servicio,
-  .paquete,
-  .faq__item,
-  .contacto,
-  .proyecto__enlace,
-  .ventana,
-  .menu {
-    background: var(--surface-solida);
-  }
-}
-
-.portada__grid {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.02fr);
-  gap: clamp(32px, 5vw, 72px);
-  align-items: center;
-}
-
-.portada h1 {
-  font-family: var(--f-display);
-  font-weight: 400; /* Anton es una sola variante, muy gruesa */
-  font-size: clamp(2.4rem, 1.2rem + 4.4vw, 4.2rem);
-  line-height: 1;
-  letter-spacing: 0;
-  text-transform: uppercase;
-  text-wrap: balance;
-  margin-bottom: 22px;
-  /* Texto con gradiente de marca (naranjas profundos). color es el respaldo si no hay clip */
-  color: var(--brand-deep);
-  background: var(--text-gradient);
-  background-size: 220% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .portada h1 {
-    animation: brillo-titulo 8s ease-in-out infinite;
-  }
-
-  @keyframes brillo-titulo {
-    0%, 100% { background-position: 0% center; }
-    50% { background-position: 100% center; }
-  }
-}
-
-.portada__lema {
-  max-width: 34rem;
-  font-size: clamp(1.02rem, 0.98rem + 0.3vw, 1.18rem);
-  color: var(--muted);
-  margin-bottom: 32px;
-  text-wrap: pretty;
-}
-
-.ventajas {
-  display: grid;
-  gap: 10px;
-  margin-top: 36px;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-
-.ventajas li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.ventajas .i {
-  color: var(--brand);
-  stroke-width: 2.4;
-}
-
-/* ===== Portada: columna del mockup de código ===== */
-.portada__demo {
-  position: relative;
-  width: 100%;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .portada__demo {
-    animation: demo-entra 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: 0.15s;
-  }
-
-  @keyframes demo-entra {
-    from { opacity: 0; transform: translateX(38px); }
-    to { opacity: 1; transform: none; }
-  }
-
-  /* Flotación continua del mockup una vez que entró */
-  .portada__demo .ventana {
-    animation: flotar-demo 6s ease-in-out 1s infinite;
-  }
-
-  @keyframes flotar-demo {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-  }
-
-  /* Entrada escalonada del texto del hero al cargar */
-  .portada__texto > * {
-    animation: subir 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-
-  .portada__texto > *:nth-child(1) { animation-delay: 0.05s; }
-  .portada__texto > *:nth-child(2) { animation-delay: 0.14s; }
-  .portada__texto > *:nth-child(3) { animation-delay: 0.23s; }
-  .portada__texto > *:nth-child(4) { animation-delay: 0.32s; }
-
-  @keyframes subir {
-    from { opacity: 0; transform: translateY(18px); }
-    to { opacity: 1; transform: none; }
-  }
-}
-
-/* Ventana: código a la izquierda, sitio resultante a la derecha */
-.ventana {
-  --c: 30px;
-  background: var(--surface);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  box-shadow: var(--sombra);
-  /* clip-path recorta la sombra: se aplica a un filtro para conservarla */
-  filter: drop-shadow(0 22px 30px rgba(5, 12, 40, 0.16));
-}
-
-.ventana__barra {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  height: 40px;
-  padding: 0 16px 0 calc(var(--c) + 6px);
-  border-bottom: 1px solid var(--line);
-  background: var(--surface);
-}
-
-.ventana__url {
-  flex: 1;
-  max-width: 260px;
-  margin-left: auto;
-  padding: 3px 12px;
-  border-radius: 6px;
-  background: var(--bg);
-  color: var(--muted);
-  font-size: 0.75rem;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.ventana__cuerpo {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  min-height: 330px;
-}
-
-.codigo {
-  margin: 0;
-  padding: 20px 16px;
-  background: #060c24;
-  color: #d7e2ff;
-  font-family: var(--f-codigo);
-  font-size: 0.74rem;
-  line-height: 1.85;
-  overflow: hidden;
-}
-
-.codigo code {
-  display: flex;
-  flex-direction: column;
-  font: inherit;
-}
-
-.codigo .l {
-  display: block;
-  white-space: pre;
-}
-
-.codigo .t { color: #7db4ff; }
-.codigo .a { color: #7ee6ff; }
-.codigo .s { color: #ffc978; }
-
-.vista {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding: 16px;
-  background: #f4f7fd;
-  color: #0a1330;
-}
-
-.vista__nav {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.vista__nav b {
-  width: 18px;
-  height: 18px;
-  border-radius: 5px;
-  background: linear-gradient(135deg, #10c0fa, #0a52ff);
-}
-
-.vista__nav i {
-  width: 24px;
-  height: 4px;
-  border-radius: 2px;
-  background: #b8c6e4;
-}
-
-.vista__nav i:first-of-type {
-  margin-left: auto;
-}
-
-.vista__hero {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-  padding: 18px 14px;
-  border-radius: 12px;
-  background: linear-gradient(140deg, #0a1a4d, #0a2f9c);
-  color: #fff;
-}
-
-.vista__hero strong {
-  font-family: var(--f-titulo);
-  font-size: 1.05rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-
-.vista__hero span {
-  font-size: 0.74rem;
-  color: #b9c8f2;
-}
-
-.vista__hero em {
-  margin-top: 6px;
-  padding: 5px 12px;
-  border-radius: 6px;
-  background: #10c0fa;
-  color: #05123a;
-  font-size: 0.7rem;
-  font-style: normal;
-  font-weight: 700;
-}
-
-.vista__catalogo {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-
-.vista__catalogo div {
-  aspect-ratio: 1 / 1.05;
-  border: 1px solid #d5dff1;
-  border-radius: 8px;
-  background: #fff radial-gradient(circle at 50% 38%, #cfe0ff 0 22%, transparent 23%);
-}
-
-/* Secuencia de entrada: coreografía en bucle controlada por JS (ver app.js).
-   Sin JS o con "reducir movimiento" (sin la clase .hero-js en <html>) todo queda
-   visible y estático, en su estado final. */
-@keyframes escribir {
-  from { clip-path: inset(0 100% 0 0); opacity: 0; }
-  to { clip-path: inset(0 0 0 0); opacity: 1; }
-}
-
-@keyframes construir {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: none; }
-}
-
-/* Estado oculto inicial cuando JS maneja la animación: la clase .hero-js la pone
-   un script en el <head> (solo si no hay prefers-reduced-motion), así desde el
-   primer render ya está oculto y no se ve el hero completo por un instante. */
-.hero-js .ventana .codigo .l,
-.hero-js .ventana .vista .b {
-  opacity: 0;
-}
-
-/* Coreografía de entrada: solo mientras el loop de JS la reproduce.
-   Mismos tiempos que la versión original (0.42s / 0.5s y delays escalonados). */
-.hero-js .ventana.reproduciendo .codigo .l {
-  animation: escribir 0.42s steps(14, end) both;
-  animation-delay: calc(0.5s + var(--i) * 0.3s);
-}
-
-.hero-js .ventana.reproduciendo .vista .b {
-  animation: construir 0.5s ease both;
-  animation-delay: calc(0.9s + var(--i) * 0.3s);
-}
-
-/* Pausa (pestaña oculta o hero fuera de pantalla): congela la coreografía. */
-.ventana.pausado .codigo .l,
-.ventana.pausado .vista .b {
-  animation-play-state: paused;
-}
-
-/* Borrado: funde código + vista juntos antes de reiniciar el ciclo.
-   --t-borrado lo fija app.js desde su constante T_ERASE. */
-.ventana.borrando .ventana__cuerpo {
-  transition: opacity var(--t-borrado, 0.7s) ease;
-  opacity: 0;
-}
-
 /* ===== 7. Nosotros ===== */
 .nosotros {
   display: grid;
@@ -1758,6 +1364,104 @@ button {
   color: var(--muted);
   font-size: 0.8rem;
   font-weight: 500;
+}
+
+/* ===== 10c. Lo que va incluido ===== */
+.incluido {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 44px;
+}
+
+.incluido__item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 26px 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+}
+
+.incluido__icono {
+  display: inline-grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--brand-gradient);
+  color: var(--on-brand);
+}
+
+.incluido__item h3 {
+  font-family: var(--f-titulo);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.incluido__item p {
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+/* ===== 10d. Hosting ===== */
+.hosting {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 44px;
+}
+
+.hosting__card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 32px 30px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  backdrop-filter: blur(12px);
+}
+
+.hosting__nombre {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(1.3rem, 1rem + 1vw, 1.7rem);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.hosting__card > p {
+  color: var(--muted);
+}
+
+.hosting__nota {
+  margin: 26px auto 0;
+  max-width: 68ch;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 1040px) {
+  .incluido { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 760px) {
+  .hosting { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .incluido { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+}
+
+@media (max-width: 380px) {
+  .incluido { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ===== 10b. Preguntas frecuentes ===== */
@@ -2696,3 +2400,84 @@ button {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ===== 16. Páginas simples (404, privacidad) ===== */
+.pagina-error {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 60px 0;
+  background: var(--bg) var(--hero-mesh);
+  background-attachment: fixed;
+}
+
+.pagina-error__caja {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: 560px;
+}
+
+.pagina-error .marca { margin-bottom: 8px; }
+
+.pagina-error__codigo {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(4rem, 2rem + 10vw, 8rem);
+  line-height: 1;
+  background: var(--text-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pagina-error__titulo {
+  font-family: var(--f-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(1.6rem, 1rem + 2vw, 2.4rem);
+  color: var(--ink);
+}
+
+.pagina-error__texto { color: var(--muted); max-width: 46ch; }
+.pagina-error .botones { margin-top: 10px; justify-content: center; }
+
+/* Documento legal (política de privacidad) */
+.legal {
+  padding: calc(var(--cab-alto) + 48px) 0 72px;
+}
+.legal__doc { max-width: calc(760px + var(--gutter) * 2); }
+.legal h1 {
+  font-family: var(--f-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 1.2rem + 3vw, 3rem);
+  color: var(--brand-deep);
+  background: var(--text-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+.legal__fecha { color: var(--muted); font-size: 0.9rem; margin-bottom: 32px; }
+.legal h2 {
+  font-family: var(--f-titulo);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--ink);
+  margin: 34px 0 10px;
+}
+.legal p, .legal li { color: var(--muted); line-height: 1.7; }
+.legal ul { list-style: disc; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; }
+.legal a:not(.btn) { color: var(--brand); text-decoration: underline; }
+.legal__todo {
+  background: var(--brand-tinte);
+  border: 1px dashed var(--line-strong);
+  border-radius: 10px;
+  padding: 4px 8px;
+  color: var(--ink);
+  font-size: 0.92em;
+}
+.legal__volver { margin-top: 40px; }
