@@ -30,61 +30,60 @@
 
 /* ===== 2. Tokens ===== */
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 
-  /* Tema único (claro, cálido): naranja ámbar + azul del logo.
+  /* Tema único (OSCURO, cálido): grafito carbón + mucho naranja y azul del logo.
      Todo el color del sitio sale de aquí; no hay colores "hardcodeados" fuera. */
-  --bg: #fbf6f0;                               /* blanco cálido */
-  --bg-2: #f3eadf;                             /* arena suave: secciones alternas y gradientes */
-  --surface: rgba(255, 255, 255, 0.72);        /* vidrio: se usa con backdrop-filter */
-  --surface-fuerte: rgba(255, 255, 255, 0.96); /* vidrio casi opaco: paneles sobre contenido */
-  --surface-solida: #ffffff;                   /* cuando hace falta opacidad total */
-  --ink: #1e140c;                              /* texto, casi negro cálido */
-  --muted: #6b5c4e;                            /* texto secundario cálido */
-  --line: rgba(30, 20, 12, 0.12);
-  --line-strong: rgba(30, 20, 12, 0.22);
-  --brand: #f26a1b;                            /* naranja ámbar: acento principal */
-  --brand-hover: #d1550a;
-  --brand-deep: #b4480a;                       /* naranja profundo: texto blanco encima (cumple AA) */
-  --brand-2: #1e6feb;                          /* azul del logo: color de apoyo */
-  --accent-blue: #1e6feb;
-  --accent-orange-hi: #ff8a3d;                 /* naranja brillante: gradientes y brillos */
-  --celeste: #4b93ff;                          /* líneas divisorias iluminadas (azul del logo) */
-  --celeste-dim: rgba(75, 147, 255, 0.55);
-  --celeste-glow: rgba(75, 147, 255, 0.7);
-  --on-brand: #ffffff;
-  --brand-tinte: rgba(242, 106, 27, 0.1);
-  --header-bg: rgba(251, 246, 240, 0.72);
-  --sombra: 0 18px 40px -22px rgba(60, 40, 20, 0.3);
-  --glow: 0 18px 44px -18px rgba(242, 106, 27, 0.4);
-  --error: #c62a2a;
+  --bg: #120d0a;                               /* grafito casi negro cálido */
+  --bg-2: #1b130d;                             /* grafito un poco más claro: secciones alternas */
+  --surface: rgba(38, 28, 20, 0.55);           /* vidrio oscuro: se usa con backdrop-filter */
+  --surface-fuerte: rgba(26, 19, 13, 0.96);    /* vidrio casi opaco: paneles sobre contenido */
+  --surface-solida: #1d1711;                   /* cuando hace falta opacidad total */
+  --ink: #f7efe7;                              /* texto, casi blanco cálido */
+  --muted: #bcab99;                            /* texto secundario cálido */
+  --line: rgba(255, 238, 220, 0.12);
+  --line-strong: rgba(255, 238, 220, 0.22);
+  --brand: #fb7a24;                            /* naranja ámbar (más vivo sobre oscuro): acento principal */
+  --brand-hover: #ff9245;
+  --brand-deep: #ff8a3d;                       /* naranja brillante: realces sobre oscuro */
+  --brand-2: #4b93ff;                          /* azul del logo (más claro sobre oscuro): color de apoyo */
+  --accent-blue: #4b93ff;
+  --accent-orange-hi: #ffa559;                 /* naranja brillante: gradientes y brillos */
+  --celeste: #5aa2ff;                          /* líneas divisorias iluminadas (azul del logo) */
+  --celeste-dim: rgba(90, 162, 255, 0.55);
+  --celeste-glow: rgba(90, 162, 255, 0.7);
+  --on-brand: #1a1109;                         /* texto oscuro sobre naranja sólido (cumple AA) */
+  --brand-tinte: rgba(251, 122, 36, 0.14);
+  --header-bg: rgba(18, 13, 10, 0.72);
+  --sombra: 0 22px 46px -20px rgba(0, 0, 0, 0.8);
+  --glow: 0 20px 50px -16px rgba(251, 122, 36, 0.55);
+  --error: #ff7b7b;
 
   /* Gradiente de marca (naranja → naranja brillante → azul del logo).
      Se usa en botón principal, íconos, menú y barra de scroll. */
-  --brand-gradient: linear-gradient(120deg, #f26a1b 0%, #ff8a3d 48%, #1e6feb 118%);
+  --brand-gradient: linear-gradient(120deg, #fb7a24 0%, #ffa559 46%, #4b93ff 118%);
   --grad-brand: var(--brand-gradient);
-  /* Gradiente para texto grande: naranjas profundos (cumplen AA en títulos grandes;
-     el naranja brillante sobre fondo claro NO pasa AA en texto, por eso va oscuro). */
-  --text-gradient: linear-gradient(100deg, #c2520a, #b4480a 55%, #d1550a);
+  /* Gradiente para texto grande: naranjas brillantes (alto contraste sobre oscuro). */
+  --text-gradient: linear-gradient(100deg, #ff8f45, #ff7a2e 48%, #ffb673);
 
-  /* Mesh del hero (cálido): foco naranja + foco azul + base clara */
+  /* Mesh del hero (oscuro): foco naranja fuerte + foco azul + base grafito */
   --hero-mesh:
-    radial-gradient(55% 45% at 10% 8%, rgba(242, 106, 27, 0.22), transparent 60%),
-    radial-gradient(45% 40% at 90% 15%, rgba(30, 111, 235, 0.16), transparent 60%),
-    radial-gradient(60% 50% at 50% 100%, rgba(255, 138, 61, 0.20), transparent 60%),
-    linear-gradient(180deg, #fbf6f0 0%, #f3eadf 100%);
-  --blob-1: rgba(242, 106, 27, 0.34);
-  --blob-2: rgba(30, 111, 235, 0.26);
+    radial-gradient(55% 45% at 12% 10%, rgba(251, 122, 36, 0.40), transparent 60%),
+    radial-gradient(45% 40% at 88% 18%, rgba(30, 111, 235, 0.34), transparent 60%),
+    radial-gradient(60% 50% at 55% 105%, rgba(255, 138, 61, 0.22), transparent 60%),
+    linear-gradient(180deg, #120d0a 0%, #1a1207 100%);
+  --blob-1: rgba(251, 122, 36, 0.5);
+  --blob-2: rgba(30, 111, 235, 0.42);
 
   /* Mesh que recorre toda la página (fijo al hacer scroll): da color y vida
      más allá del hero. --alt-veil es el velo de las secciones alternas. */
   --page-mesh:
-    radial-gradient(900px 650px at 100% 0%, rgba(242, 106, 27, 0.12), transparent 58%),
-    radial-gradient(820px 600px at 0% 26%, rgba(30, 111, 235, 0.12), transparent 55%),
-    radial-gradient(700px 520px at 100% 50%, rgba(30, 20, 12, 0.07), transparent 58%),
-    radial-gradient(860px 680px at 10% 92%, rgba(30, 20, 12, 0.05), transparent 62%);
-  /* Velo de secciones alternas: arena cálida (NO blanco plano) sobre el mesh */
-  --alt-veil: rgba(243, 234, 223, 0.6);
+    radial-gradient(900px 650px at 100% 0%, rgba(251, 122, 36, 0.18), transparent 58%),
+    radial-gradient(820px 600px at 0% 26%, rgba(30, 111, 235, 0.20), transparent 55%),
+    radial-gradient(760px 560px at 100% 55%, rgba(255, 138, 61, 0.12), transparent 55%),
+    radial-gradient(900px 700px at 15% 88%, rgba(30, 111, 235, 0.14), transparent 60%);
+  /* Velo de secciones alternas: grafito oscuro translúcido sobre el mesh */
+  --alt-veil: rgba(10, 7, 4, 0.5);
 
   --f-display: 'Anton', 'Arial Narrow', 'Segoe UI', system-ui, sans-serif;
   --f-titulo: 'Onest', 'Segoe UI', system-ui, sans-serif;
@@ -2078,6 +2077,354 @@ button {
     opacity: 1;
     transform: none;
   }
+}
+
+/* ===== 13c. Hero "sitio despiezado" =====
+   La sección es alta; su interior se fija (position: sticky) mientras se hace scroll.
+   js/hero-despiece.js separa las capas en 3D con GSAP. Sin JS / con "reducir
+   movimiento" todo queda visible: la ventana armada y los títulos como lista. */
+.despiece {
+  position: relative;
+  height: 480vh;              /* largo del "pin": ~380vh de animación */
+}
+
+.despiece__sticky {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: calc(var(--cab-alto) + 14px) 0 32px;
+  background: var(--bg) var(--hero-mesh);
+  background-attachment: local;
+  overflow: hidden;           /* contiene los blobs; las capas no se recortan (ver escena) */
+}
+
+/* Blobs de color que flotan detrás del hero */
+.despiece__sticky::before,
+.despiece__sticky::after {
+  content: '';
+  position: absolute;
+  width: 46vmax;
+  height: 46vmax;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+}
+.despiece__sticky::before { background: var(--blob-1); top: -16vmax; left: -12vmax; }
+.despiece__sticky::after  { background: var(--blob-2); bottom: -18vmax; right: -10vmax; }
+
+.despiece__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  align-items: center;
+  gap: clamp(28px, 4vw, 64px);
+  width: 100%;
+}
+
+/* ---- Columna de texto ---- */
+.despiece__eyebrow {
+  font-family: var(--f-titulo);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: 12px;
+}
+
+.despiece__texto h1 {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(2.3rem, 1.2rem + 4.2vw, 4rem);
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: var(--brand-deep);
+  background: var(--text-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Títulos de cada capa. Por defecto (sin JS) se ven como lista vertical. */
+.despiece__titulares {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.despiece__cap-title {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(1.4rem, 0.9rem + 1.6vw, 2.05rem);
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.despiece__cap-sub {
+  color: var(--muted);
+  font-size: 1rem;
+  margin-top: 4px;
+  max-width: 42ch;
+}
+
+/* Con JS, los títulos se superponen y se cruzan uno a uno (lo activa hero-despiece.js) */
+.despiece__titulares.js-overlay {
+  position: relative;
+  display: block;
+  min-height: 9.5em;
+  margin-top: 18px;
+}
+.despiece__titulares.js-overlay .despiece__cap {
+  position: absolute;
+  inset: 0;
+  will-change: opacity, transform;
+}
+
+.despiece__cap--cta .despiece__cap-title {
+  color: var(--brand-deep);
+  background: var(--text-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.despiece .botones {
+  margin-top: 26px;
+}
+
+.despiece__hint {
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.despiece__hint::after {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  animation: despiece-bajar 1.6s ease-in-out infinite;
+}
+@keyframes despiece-bajar {
+  0%, 100% { transform: translateY(0) rotate(45deg); opacity: 0.5; }
+  50% { transform: translateY(4px) rotate(45deg); opacity: 1; }
+}
+
+.despiece__progreso {
+  margin-top: 14px;
+  font-family: var(--f-display);
+  font-size: 1.1rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+.despiece__prog-num { color: var(--brand); }
+
+/* ---- Escena 3D ---- */
+.despiece__escena {
+  position: relative;
+  perspective: 1500px;
+  perspective-origin: 50% 42%;
+  display: flex;
+  justify-content: center;
+}
+
+.despiece__pila {
+  position: relative;
+  width: min(100%, 470px);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.despiece__chrome {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 14px 14px 0 0;
+  background: var(--surface-fuerte);
+  border: 1px solid var(--line);
+  border-bottom: 0;
+  backdrop-filter: blur(10px);
+}
+.despiece__chrome .puntos { display: inline-flex; gap: 6px; }
+.despiece__chrome .puntos i {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--line-strong);
+}
+.despiece__chrome .puntos i:first-child { background: var(--brand); }
+.despiece__chrome .puntos i:nth-child(2) { background: var(--accent-orange-hi); }
+.despiece__chrome .puntos i:nth-child(3) { background: var(--brand-2); }
+.despiece__url {
+  flex: 1;
+  text-align: center;
+  font-family: var(--f-codigo);
+  font-size: 0.74rem;
+  color: var(--muted);
+  background: var(--bg-2);
+  border-radius: 7px;
+  padding: 4px 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.despiece__cuerpo {
+  position: relative;
+  aspect-ratio: 4 / 3.1;
+  transform-style: preserve-3d;
+}
+
+/* Cada capa llena el cuerpo. Apiladas se ven como UNA ventana; al explotar se separan. */
+.capa {
+  position: absolute;
+  inset: 0;
+  border-radius: 0 0 14px 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--surface-solida);
+  box-shadow: var(--sombra);
+  backface-visibility: hidden;
+}
+
+.capa__tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 5;
+  font-family: var(--f-titulo);
+  font-weight: 700;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--on-brand);
+  background: var(--brand);
+  border-radius: 999px;
+  padding: 4px 10px;
+  opacity: 0;              /* la hace aparecer el JS al separarse (capa decorativa) */
+}
+
+/* Capa Diseño: un mini sitio terminado */
+.capa--diseno { background: var(--surface-solida); }
+.mini { display: flex; flex-direction: column; height: 100%; }
+.mini__nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 14px; border-bottom: 1px solid var(--line);
+}
+.mini__logo { width: 34px; height: 10px; border-radius: 4px; background: var(--brand-gradient); }
+.mini__links { display: inline-flex; gap: 7px; }
+.mini__links i { width: 22px; height: 6px; border-radius: 3px; background: var(--line-strong); }
+.mini__hero { padding: 20px 16px; display: flex; flex-direction: column; gap: 10px; }
+.mini__h { width: 76%; height: 18px; border-radius: 6px; background: var(--brand-gradient); }
+.mini__p { width: 92%; height: 9px; border-radius: 5px; background: var(--line-strong); }
+.mini__btn { width: 92px; height: 20px; border-radius: 7px; background: var(--brand); margin-top: 4px; }
+.mini__cards { margin-top: auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 0 16px 16px; }
+.mini__cards span { height: 42px; border-radius: 8px; background: var(--bg-2); border: 1px solid var(--line); }
+
+/* Capa Código */
+.capa--codigo { background: #140f0b; }
+.capa__code {
+  margin: 0; height: 100%; padding: 18px 16px;
+  font-family: var(--f-codigo); font-size: 0.74rem; line-height: 1.9;
+  color: #d8cbbd; overflow: hidden;
+}
+.capa__code .cl { display: block; white-space: pre; }
+.capa__code .ct { color: var(--brand); }
+.capa__code .ca { color: var(--accent-blue); }
+.capa__code .cs { color: #8fd98a; }
+.capa__glyph {
+  position: absolute; right: 12px; bottom: 6px;
+  font-family: var(--f-display); font-size: 3.4rem; line-height: 1;
+  color: var(--brand); opacity: 0.16;
+}
+
+/* Capa SEO: una tarjeta tipo resultado de Google (clara para que se lea) */
+.capa--seo { background: #f3f1ee; }
+.seo { padding: 16px; display: flex; flex-direction: column; gap: 14px; height: 100%; }
+.seo__bar {
+  display: flex; align-items: center; gap: 8px;
+  background: #fff; border: 1px solid #e0ddd8; border-radius: 999px; padding: 8px 12px;
+}
+.seo__bar .seo__lupa { color: #9aa0a6; }
+.seo__bar span { flex: 1; height: 7px; border-radius: 4px; background: #e6e3de; }
+.seo__result { display: flex; flex-direction: column; gap: 7px; }
+.seo__url { font-family: var(--f-codigo); font-size: 0.68rem; color: #3a8a4f; }
+.seo__title { font-family: var(--f-titulo); font-weight: 700; font-size: 1rem; color: #1a4fc4; }
+.seo__line { height: 8px; border-radius: 4px; background: #cfccc6; width: 100%; }
+.seo__line--sm { width: 62%; }
+
+/* Capa Seguridad */
+.capa--seguridad {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  background: radial-gradient(120% 120% at 50% 0%, rgba(75,147,255,0.12), transparent 60%), var(--surface-solida);
+}
+.seg__lock { color: var(--brand); stroke: var(--brand); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.seg__https { font-family: var(--f-codigo); font-size: 1.1rem; color: var(--ink); }
+.seg__https::after { content: 'tuempresa.com'; color: var(--muted); }
+.seg__badge {
+  font-family: var(--f-titulo); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.1em;
+  color: var(--accent-blue); border: 1px solid var(--celeste-dim); border-radius: 999px; padding: 4px 12px;
+}
+
+/* Capa Velocidad: un indicador (ilustración, sin cifras reales) */
+.capa--velocidad {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+  background: radial-gradient(120% 120% at 50% 100%, rgba(251,122,36,0.12), transparent 60%), var(--surface-solida);
+}
+.vel__gauge { width: 150px; height: auto; }
+.vel__track { fill: none; stroke: var(--line-strong); stroke-width: 9; stroke-linecap: round; }
+.vel__fill  { fill: none; stroke: var(--brand); stroke-width: 9; stroke-linecap: round; }
+.vel__needle { stroke: var(--ink); stroke-width: 3; stroke-linecap: round; }
+.vel__hub { fill: var(--ink); }
+.vel__bars { display: inline-flex; align-items: flex-end; gap: 7px; height: 30px; }
+.vel__bars i { width: 12px; border-radius: 3px; background: var(--brand); }
+.vel__bars i:nth-child(1) { height: 40%; }
+.vel__bars i:nth-child(2) { height: 62%; }
+.vel__bars i:nth-child(3) { height: 82%; }
+.vel__bars i:nth-child(4) { height: 100%; background: var(--accent-orange-hi); }
+
+/* ---- Tablet / móvil: escena más plana, apilada en vertical ---- */
+@media (max-width: 900px) {
+  .despiece { height: 360vh; }
+  .despiece__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    justify-items: center;
+    text-align: center;
+  }
+  .despiece__texto { order: 2; }
+  .despiece__escena { order: 1; perspective: 1100px; width: 100%; }
+  .despiece__pila { width: min(86vw, 340px); }
+  .despiece__cap-sub { margin-inline: auto; }
+  .despiece .botones { justify-content: center; }
+  .despiece__titulares.js-overlay { min-height: 11em; }
+}
+
+@media (max-width: 480px) {
+  .despiece { height: 320vh; }
+  .despiece__pila { width: min(90vw, 300px); }
+}
+
+/* ---- Sin animación: lista estática legible + ventana armada ---- */
+@media (prefers-reduced-motion: reduce) {
+  .despiece { height: auto; }
+  .despiece__sticky { position: static; min-height: 0; padding: calc(var(--cab-alto) + 24px) 0 48px; }
+  .despiece__hint, .despiece__progreso { display: none; }
 }
 
 /* ===== 14. Responsive ===== */
