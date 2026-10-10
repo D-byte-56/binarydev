@@ -1,0 +1,11 @@
+# Binarydev — https://d-byte-56.github.io/binarydev/
+# Nota: en GitHub Pages este archivo se sirve en /binarydev/robots.txt.
+# La ubicacion autoritativa que leen los buscadores es la raiz del dominio
+# (d-byte-56.github.io/robots.txt), que pertenece a otro repositorio.
+# Por eso conviene enviar el sitemap directamente en Google Search Console.
+# Si algun dia se usa un dominio propio en la raiz, este archivo pasa a ser valido.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://d-byte-56.github.io/binarydev/sitemap.xml
