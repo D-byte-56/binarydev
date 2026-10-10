@@ -105,6 +105,7 @@
     // El mensaje de la izquierda pasa al cierre (CTA) al terminar de armarse
     tl.call(mostrarCap, [ULTIMO], tJoin + 0.45);
 
+    tl.timeScale(1.25); // un poco más rápida (~2.1 s en vez de ~2.66 s)
     return tl;
   }
 
