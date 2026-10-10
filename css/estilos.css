@@ -313,6 +313,13 @@ button {
   width: 100%;
 }
 
+/* CTA compacto de la cabecera: alto 40px para alinear con idioma/sonido */
+.btn--cotizar {
+  height: 40px;
+  padding: 0 16px;
+  font-size: 0.86rem;
+}
+
 .botones {
   display: flex;
   flex-wrap: wrap;
@@ -2151,6 +2158,11 @@ button {
 
   .hamburguesa {
     display: inline-flex;
+  }
+
+  /* En móvil el CTA de cabecera se oculta: ya hay botón en el hero y Contacto en el menú */
+  .btn--cotizar {
+    display: none;
   }
 
   /* Menú desplegable bajo la cabecera */
