@@ -1796,11 +1796,11 @@ button {
    movimiento" todo queda visible: la ventana armada y los títulos como lista. */
 .despiece {
   position: relative;
-  height: 480vh;              /* largo del "pin": ~380vh de animación */
+  min-height: 100vh;         /* una sola pantalla: la animación corre sola al cargar */
 }
 
 .despiece__sticky {
-  position: sticky;
+  position: relative;        /* ya no se fija al scroll (la animación no depende de él) */
   top: 0;
   min-height: 100vh;
   display: flex;
@@ -1942,6 +1942,32 @@ button {
   letter-spacing: 0.05em;
 }
 .despiece__prog-num { color: var(--brand); }
+
+/* Botón "Ver de nuevo": sutil, lo revela el JS al terminar la animación.
+   Por defecto oculto (opacity/visibility) → con reduce o sin JS no aparece. */
+.despiece__replay {
+  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 13px;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--f-titulo);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.despiece__replay .i { transition: transform 0.4s ease; }
+@media (hover: hover) {
+  .despiece__replay:hover { color: var(--brand); border-color: var(--brand); }
+  .despiece__replay:hover .i { transform: rotate(-180deg); }
+}
 
 /* ---- Escena 3D ---- */
 .despiece__escena {
@@ -2111,7 +2137,6 @@ button {
 
 /* ---- Tablet / móvil: escena más plana, apilada en vertical ---- */
 @media (max-width: 900px) {
-  .despiece { height: 360vh; }
   .despiece__grid {
     grid-template-columns: minmax(0, 1fr);
     gap: 24px;
@@ -2127,7 +2152,6 @@ button {
 }
 
 @media (max-width: 480px) {
-  .despiece { height: 320vh; }
   .despiece__pila { width: min(90vw, 300px); }
 }
 

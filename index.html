@@ -95,6 +95,7 @@
       <symbol id="i-lupa" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></symbol>
       <symbol id="i-externo" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
       <symbol id="i-flecha" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="i-repetir" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.34-5.66M20 4v4h-4"/></symbol>
       <symbol id="i-correo" viewBox="0 0 24 24"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 7 9 6.5L21 7"/></symbol>
       <symbol id="i-volumen" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></symbol>
       <symbol id="i-mudo" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="m22 9-6 6M16 9l6 6"/></symbol>
@@ -199,6 +200,11 @@
 
             <p class="despiece__hint" data-hint aria-hidden="true"><span data-i18n="despiece_hint">Desplázate para ver las capas</span></p>
             <p class="despiece__progreso" data-progreso aria-hidden="true"><span class="despiece__prog-num" data-prog-num>1</span><span class="despiece__prog-tot">/5</span></p>
+
+            <button type="button" class="despiece__replay" data-replay>
+              <svg class="i" width="15" height="15" aria-hidden="true"><use href="#i-repetir"/></svg>
+              <span data-i18n="despiece_replay">Ver de nuevo</span>
+            </button>
           </div>
 
           <!-- Escena 3D: ilustración (decorativa). La info real está en los títulos. -->
@@ -830,9 +836,8 @@
   <script src="js/data/i18n.js" defer></script>
   <script src="js/app.js" defer></script>
 
-  <!-- GSAP + ScrollTrigger (alojados en el sitio) y la escena del hero despiezado -->
+  <!-- GSAP (alojado en el sitio) y la escena del hero despiezado (animación automática) -->
   <script src="js/vendor/gsap.min.js" defer></script>
-  <script src="js/vendor/ScrollTrigger.min.js" defer></script>
   <script src="js/hero-despiece.js" defer></script>
 </body>
 </html>

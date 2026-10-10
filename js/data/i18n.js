@@ -64,6 +64,7 @@ const TRAD = {
     despiece_cta_title: '¿Hablamos de tu sitio?',
     despiece_cta_sub: 'Todo eso va incluido. Cuéntanos qué necesita tu negocio.',
     despiece_hint: 'Desplázate para ver las capas',
+    despiece_replay: 'Ver de nuevo',
 
     about_title: 'Somos {empresa}',
     about_1: 'Somos un estudio de desarrollo web con base en <strong>{ciudad}, {pais}</strong>. Ayudamos a negocios y empresas a tener una presencia digital clara, rápida y fácil de administrar.',
@@ -282,6 +283,7 @@ const TRAD = {
     despiece_cta_title: 'Let\'s talk about your site',
     despiece_cta_sub: 'It all comes included. Tell us what your business needs.',
     despiece_hint: 'Scroll to see the layers',
+    despiece_replay: 'Replay',
 
     about_title: 'We are {empresa}',
     about_1: 'We are a web development studio based in <strong>{ciudad}, {pais}</strong>. We help businesses and companies build a clear, fast and easy-to-manage online presence.',
