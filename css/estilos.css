@@ -39,10 +39,10 @@
   --surface: rgba(38, 28, 20, 0.55);           /* vidrio oscuro: se usa con backdrop-filter */
   --surface-fuerte: rgba(26, 19, 13, 0.96);    /* vidrio casi opaco: paneles sobre contenido */
   --surface-solida: #1d1711;                   /* cuando hace falta opacidad total */
-  --ink: #f7efe7;                              /* texto, casi blanco cálido */
-  --muted: #bcab99;                            /* texto secundario cálido */
-  --line: rgba(255, 238, 220, 0.12);
-  --line-strong: rgba(255, 238, 220, 0.22);
+  --ink: #FAFAFA;                              /* texto, blanco */
+  --muted: rgba(255, 255, 255, 0.74);          /* texto secundario, blanco atenuado */
+  --line: rgba(255, 255, 255, 0.10);
+  --line-strong: rgba(255, 255, 255, 0.18);
   --brand: #fb7a24;                            /* naranja ámbar (más vivo sobre oscuro): acento principal */
   --brand-hover: #ff9245;
   --brand-deep: #ff8a3d;                       /* naranja brillante: realces sobre oscuro */
@@ -2078,7 +2078,7 @@ button {
 .capa__code {
   margin: 0; height: 100%; padding: 18px 16px;
   font-family: var(--f-codigo); font-size: 0.74rem; line-height: 1.9;
-  color: #d8cbbd; overflow: hidden;
+  color: var(--ink); overflow: hidden;
 }
 .capa__code .cl { display: block; white-space: pre; }
 .capa__code .ct { color: var(--brand); }
